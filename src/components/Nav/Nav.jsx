@@ -8,11 +8,16 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">API Quote Generator</h2>
-      </Link>
-      <div>
+    <>
+      <center>
+        <div className="nav">
+          <Link to="/home">
+            <img src="./api-quote-generator-header.png" alt="API Quote Generator" width="75%" height="75%" style={{ maxWidth: 1100, }} />
+          </Link>
+        </div>
+      </center>
+
+      <div className="navLink">
         {/* If no user is logged in, show these links */}
         {user.id === null &&
           // If there's no user, show login/registration links
@@ -20,6 +25,7 @@ function Nav() {
             Login / Register
           </Link>
         }
+
 
         {/* If a user is logged in, show these links */}
         {user.id && (
@@ -36,7 +42,8 @@ function Nav() {
           </>
         )}
       </div>
-    </div>
+      <hr/>
+    </>
   );
 }
 

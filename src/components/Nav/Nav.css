@@ -1,34 +1,40 @@
+/* #c28022 - caramel - #eacca2 - cream */
+
+hr {
+  background-color: #c28022;
+  height: 10px;
+  outline-color: black;
+  outline-width: 2px;
+  outline-style:inset;
+}
+
 .nav {
   /* flex box layout */
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin: 0 0 30px;
-  background-color: #00acb0;
+  margin-bottom: -70px;
+  background-color: #bda686;
   overflow: hidden;
+  width: auto;
 }
 
 .nav a {
   text-decoration: none;
 }
 
-.nav-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #f2f2f2;
-  padding-left: 10px;
-  margin: 0;
-}
-
 .navLink {
-  display: inline-block;
-  color: #f2f2f2;
-  background-color: #00acb0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-weight: bold;
+  color: black;
+  background-color: #bda686;
   text-align: center;
-  padding: 24px 10px;
+  margin-bottom: -10px;
+  font-size: 20px;
+  padding: 20px;
   text-decoration: none;
-  font-size: 15px;
 
   /* these last two make the logout button in
   the nav bar look like another link */
@@ -37,6 +43,7 @@
   outline: 0;
 }
 
-.navLink:hover {
+/*TODO Need to work on this later, gotta split some divs up. -LS
+/* .navLink:hover {
   background-color: #008183;
-}
+} */
