@@ -1,12 +1,12 @@
 /* #c28022 - caramel - #eacca2 - cream */
 
-hr {
+/* hr {
   background-color: #c28022;
   height: 10px;
   outline-color: black;
   outline-width: 2px;
   outline-style:inset;
-}
+} */
 
 .nav {
   /* flex box layout */
