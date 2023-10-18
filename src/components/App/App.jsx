@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import UserPage from '../UserPage/UserPage';
@@ -30,7 +30,19 @@ function App() {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#ff8b45',
+      },
+      secondary: {
+        main: '#C70039'
+      },
+    }
+  }); // End theme
+
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <div>
         <Nav />
@@ -106,8 +118,9 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-      </div>
+      </div>    
     </Router>
+    </ThemeProvider>
   );
 }
 
