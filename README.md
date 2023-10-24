@@ -1,3 +1,21 @@
+# Quote Generator API Application
+
+**Overview**
+Welcome to the Quote Generator API application! This project is in its early stages of development and aims to provide users with a seamless and engaging experience centered around discovering and managing their favorite quotes. With the Quote Generator API, users can register an account, log in securely, search for quotes, and curate a collection of their favorite quotes.
+
+# Key Features
+
+1. User Registration and Authentication: Users can create accounts and securely log in to personalize their experience with the app.
+2. Quote Generation: The application provides a collection of inspirational, motivational, and thought-provoking quotes that users can explore. These quotes can serve as a source of inspiration and wisdom.
+3. Search Functionality: Users can search for specific quotes or topics of interest, making it easy to find quotes that resonate with them.
+4. Favorite Quotes: The app allows users to save their favorite quotes to revisit later. These favorite quotes are conveniently stored in a separate section for easy access.
+5. User-Friendly Interface: The user interface is designed to be intuitive, making it straightforward for users to navigate and interact with the app.
+
+
+
+
+
+
 
 # Prime Project Starter
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
@@ -119,3 +137,9 @@ This code is also heavily commented. We recommend reading through the comments, 
 ## Update Documentation
 
 Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+
+## Contact 
+
+For inquiries and support, please contact our team at leviTech@gmail.com.
+
+Thank you for your interest in the Quote Generator API application! We look forward to continuing development and providing users with an inspiring and enriching experience.
