@@ -20,6 +20,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
+import Quotes from '../Quotes/Quotes';
 
 function App() {
   const dispatch = useDispatch();
@@ -68,6 +69,10 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/quotes">
+            <Quotes />
           </ProtectedRoute>
 
           <Route

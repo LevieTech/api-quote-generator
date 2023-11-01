@@ -34,6 +34,8 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/quotes">Quotes</Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>
