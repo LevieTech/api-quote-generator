@@ -20,12 +20,12 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get(`/api/search/quotes`, (req, res) => {
+app.get(`/search/quotes`, (req, res) => {
   axios.get(`https://api.quotable.io/`).then((response) => {
     res.send(response.data);
   }).catch((error) => {
     console.log('Error in server.js', error)
-    res.sendStatus(500)
+    res.sendStatus(500);
   })
 })
 
