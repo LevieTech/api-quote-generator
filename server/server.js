@@ -20,7 +20,7 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get(`/search/quotes`, (req, res) => {
+app.get(`/api/quotes/:id`, (req, res) => {
   axios.get(`https://api.quotable.io/`).then((response) => {
     res.send(response.data);
   }).catch((error) => {
