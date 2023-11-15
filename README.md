@@ -140,6 +140,6 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 ## Contact 
 
-For inquiries and support, please contact our team at leviTech@gmail.com.
+For inquiries and support, please contact our team at levitech247@gmail.com.
 
 Thank you for your interest in the Quote Generator API application! We look forward to continuing development and providing users with an inspiring and enriching experience.
