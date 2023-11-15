@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import axios from 'axios';
 
 function Quotes() {
 
@@ -14,15 +15,22 @@ function Quotes() {
         dispatch({ type: 'SET_SEARCH', payload: search })
     }
 
+    const randomQuote = () => {
+        dispatch({ type: 'GET_RANDOM' });
+    }
+    
+
     return (
         <center>
             <div className="quotesDiv">
                 <h2>Hello! This is where the quotes will be</h2>
-                <form onSubmit={handleSubmit}>
-                    <input type="search" value={search} onChange={handleChange}/>
-                    <input type="submit" />
-                </form>
+
+                <input type="search" value={search} onChange={handleChange} />
+                <button onClick={handleSubmit}>Submit</button>
+                <div>
+                    <button onClick={randomQuote}>Random</button>
                 </div>
+            </div>
         </center>
     )
 } //! End Quotes ()
