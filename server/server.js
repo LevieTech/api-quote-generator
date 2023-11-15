@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 
 const app = express();
-
+const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 const axios = require('axios');
@@ -12,6 +12,8 @@ const userRouter = require('./routes/user.router');
 
 // Body parser middleware
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
@@ -20,8 +22,8 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get(`/api/quotes/random/`, (req, res) => {
-  axios.get(`https://api.quotable.io/quotes/random/`).then((response) => {
+app.get(`/api/quotes`, (req, res) => {
+  axios.get(`https://api.quotable.io/`).then((response) => {
     res.send(response.data);
   }).catch((error) => {
     console.log('Error in server.js', error);

@@ -26,9 +26,9 @@ function Quotes() {
                 <h2>Hello! This is where the quotes will be</h2>
 
                 <input type="search" value={search} onChange={handleChange} />
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={() => handleSubmit()}>Submit</button>
                 <div>
-                    <button onClick={randomQuote}>Random</button>
+                    <button onClick={() => randomQuote()}>Random</button>
                 </div>
             </div>
         </center>
