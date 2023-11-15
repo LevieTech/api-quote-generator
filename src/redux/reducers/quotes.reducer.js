@@ -1,4 +1,4 @@
-const quoteReducer = (state = {}, action) => {
+const quoteReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_QUOTES':
             console.log('Reducer check:', action.payload);

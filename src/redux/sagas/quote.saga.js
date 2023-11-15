@@ -9,7 +9,7 @@ function * getQuote(action){
         yield put({ type: 'SET_QUOTES', payload: quotes.data });
 
     } catch (error){
-        console.log('Error in getQuote in quote.saga', error)
+        console.log('Error in getQuote in quote.saga', error);
     }
 }
 
