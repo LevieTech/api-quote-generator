@@ -22,7 +22,7 @@ function Quotes() {
                     <input type="search" value={search} onChange={handleChange}/>
                     <input type="submit" />
                 </form>
-                </div>
+                </div> 
         </center>
     )
 } //! End Quotes ()
