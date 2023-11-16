@@ -6,6 +6,9 @@ function Quotes() {
 
     const [search, setSearch] = useState('');
     const dispatch = useDispatch();
+    const quotes = useSelector(store => store.quotes);
+
+    console.log(`checking for quotes`, quotes);
 
     const handleChange = (event) => {
         setSearch(event.target.value);
@@ -30,6 +33,7 @@ function Quotes() {
                 <div>
                     <button onClick={() => randomQuote()}>Random</button>
                 </div>
+                <div></div>
             </div>
         </center>
     )

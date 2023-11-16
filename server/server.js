@@ -22,8 +22,9 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get(`/api/quotes`, (req, res) => {
-  axios.get(`https://api.quotable.io/`).then((response) => {
+app.get(`/api/quotes/random`, (req, res) => {
+  axios.get(`https://api.quotable.io/quotes/random`).then((response) => {
+    console.log('Checking the response', response.data)
     res.send(response.data);
   }).catch((error) => {
     console.log('Error in server.js', error);
