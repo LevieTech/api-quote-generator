@@ -21,7 +21,7 @@ function Quotes() {
     const randomQuote = () => {
         dispatch({ type: 'GET_RANDOM' });
     }
-    
+
 
     return (
         <center>
@@ -33,7 +33,15 @@ function Quotes() {
                 <div>
                     <button onClick={() => randomQuote()}>Random</button>
                 </div>
-                <div></div>
+                <div className="randomQuoteDiv">
+                    {/* {
+                        quotes.map(quote =>
+                            <div key={quote.id}>
+                                {quote.content}
+                            </div>
+                        )
+                    } */}
+                </div>
             </div>
         </center>
     )

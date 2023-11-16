@@ -32,6 +32,16 @@ app.get(`/api/quotes/random`, (req, res) => {
   })
 })
 
+app.get(`/api/quotes/:id`, (req, res) => {
+  axios.get(`https://api.quotable.io/quotes/`).then((response) => {
+    console.log('Checking the response', response.data)
+    res.send(response.data);
+  }).catch((error) => {
+    console.log('Error in server.js', error);
+    res.sendStatus(500);
+  })
+})
+
 
 /* Routes */
 app.use('/api/user', userRouter);
