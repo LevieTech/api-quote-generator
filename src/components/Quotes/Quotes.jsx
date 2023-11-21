@@ -34,17 +34,17 @@ function Quotes() {
                     <button onClick={randomQuote}>Random</button>
                 </div>
                 <div className="randomQuoteDiv">
-                    {
+                    {/* {
                         quotes.length === 0 ? (
                             <div>Display a random quote!</div>
                         ) : (
                             quotes.map(quote =>
                                 <div key={quote.id}>
-                                    {quote.content}
+                                    {quote.content} - {quote.author}
                                 </div>
                             )
                         )
-                    }
+                    } */}
                 </div>
             </div>
         </center>
