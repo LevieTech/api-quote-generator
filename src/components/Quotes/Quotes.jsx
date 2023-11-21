@@ -11,6 +11,7 @@ function Quotes() {
     console.log(`checking for quotes`, quotes);
 
     const handleChange = (event) => {
+        event.preventDefault();
         setSearch(event.target.value);
     }
 
