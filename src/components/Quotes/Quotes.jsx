@@ -29,18 +29,22 @@ function Quotes() {
                 <h2>Hello! This is where the quotes will be</h2>
 
                 <input type="search" value={search} onChange={handleChange} />
-                <button onClick={() => handleSubmit()}>Submit</button>
+                <button onClick={handleSubmit}>Submit</button>
                 <div>
-                    <button onClick={() => randomQuote()}>Random</button>
+                    <button onClick={randomQuote}>Random</button>
                 </div>
                 <div className="randomQuoteDiv">
-                    {/* {
-                        quotes.map(quote =>
-                            <div key={quote.id}>
-                                {quote.content}
-                            </div>
+                    {
+                        quotes.length === 0 ? (
+                            <div>Display a random quote!</div>
+                        ) : (
+                            quotes.map(quote =>
+                                <div key={quote.id}>
+                                    {quote.content}
+                                </div>
+                            )
                         )
-                    } */}
+                    }
                 </div>
             </div>
         </center>
