@@ -34,6 +34,7 @@ function Quotes() {
                 </div>
                 <RandomQuotes />
             </div>
+
         </center>
     )
 } //! End Quotes ()
