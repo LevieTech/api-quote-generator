@@ -21,6 +21,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import Quotes from '../Quotes/Quotes';
+import RandomQuotes from '../Quotes/RandomQuotes';
 
 function App() {
   const dispatch = useDispatch();
