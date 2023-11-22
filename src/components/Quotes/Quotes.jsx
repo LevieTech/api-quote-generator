@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import RandomQuotes from './RandomQuotes';
+
 
 function Quotes() {
 
@@ -17,10 +17,6 @@ function Quotes() {
         dispatch({ type: 'SET_SEARCH', payload: search })
     }
 
-    const randomQuote = () => {
-        dispatch({ type: 'GET_RANDOM' });
-    }
-
 
     return (
         <center>
@@ -28,11 +24,8 @@ function Quotes() {
                 <h2>Hello! This is where the quotes will be</h2>
 
                 <input type="search" value={search} onChange={handleChange} />
-                <button onClick={handleSubmit}>Submit</button>
-                <div>
-                    <button onClick={randomQuote}>Random</button>
-                </div>
-                <RandomQuotes />
+                <button className="btn" onClick={handleSubmit}>Submit</button>
+                <br /><br />
             </div>
         </center>
     )

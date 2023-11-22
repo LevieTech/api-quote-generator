@@ -14,7 +14,7 @@ function RandomQuotes() {
                 <div>Display a random quote!</div>
             ) : (
                 quotes.map(quote =>
-                    <div key={quote.id}>
+                    <div key={quote._id}>
                         {quote.content} - {quote.author}
                     </div>
                 )
