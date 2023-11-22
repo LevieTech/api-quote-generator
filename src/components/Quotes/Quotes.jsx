@@ -1,14 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import axios from 'axios';
+import RandomQuotes from './RandomQuotes';
 
 function Quotes() {
 
     const [search, setSearch] = useState('');
     const dispatch = useDispatch();
-    const quotes = useSelector(store => store.quotes);
-
-    console.log(`checking for quotes`, quotes);
+   
 
     const handleChange = (event) => {
         event.preventDefault();
@@ -34,19 +32,7 @@ function Quotes() {
                 <div>
                     <button onClick={randomQuote}>Random</button>
                 </div>
-                <div className="randomQuoteDiv">
-                    {/* {
-                        quotes.length === 0 ? (
-                            <div>Display a random quote!</div>
-                        ) : (
-                            quotes.map(quote =>
-                                <div key={quote.id}>
-                                    {quote.content} - {quote.author}
-                                </div>
-                            )
-                        )
-                    } */}
-                </div>
+                <RandomQuotes />
             </div>
         </center>
     )
