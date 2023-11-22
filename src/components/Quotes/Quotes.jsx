@@ -27,6 +27,7 @@ function Quotes() {
                 <button className="btn" onClick={handleSubmit}>Submit</button>
                 <br /><br />
             </div>
+
         </center>
     )
 } //! End Quotes ()
