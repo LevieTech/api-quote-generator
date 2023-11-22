@@ -17,11 +17,10 @@ function RandomQuotes() {
                             <Card sx={{
                                 boxShadow: 4,
                                 width: '350px',
-                                height: '250px',
+                                height: '225px',
                                 fontSize: 16,
-                                display: 'flexbox',
+                                display: 'inline-block',
                                 alignItems: 'center',
-                                // textAlign: 'center',
                                 justifyContent: 'center',
                                 padding: '15px',
                                 outlineWidth: 3,
