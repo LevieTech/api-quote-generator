@@ -19,14 +19,14 @@ function RandomQuotes() {
                                 width: '350px',
                                 height: '225px',
                                 fontSize: 16,
-                                display: 'inline-block',
+                                display: 'flex',
+                                flexWrap: 'wrap',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 padding: '15px',
                                 outlineWidth: 3,
                             }}>
-                                <br />
-                                <h4>{quote.content}</h4>
+                                <h4>"{quote.content}"</h4>
                                 <br />
                                 <p>-{quote.author}</p>
                             </Card>
