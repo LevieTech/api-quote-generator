@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { Card } from '@mui/material';
 
 function RandomQuotes() {
 
@@ -8,20 +7,35 @@ function RandomQuotes() {
 
     return (
         <div className="randomQuoteDiv">
-        <br />
-        {
-            quotes.length === 0 ? (
-                <div>Display a random quote!</div>
-            ) : (
-                quotes.map(quote =>
-                    <div key={quote.id}>
-                        {quote.content} - {quote.author}
-                    </div>
+            <br />
+            {
+                quotes.length === 0 ? (
+                    <h3>Display a random quote!</h3>
+                ) : (
+                    quotes.map(quote =>
+                        <div key={quote._id}>
+                            <Card sx={{
+                                boxShadow: 4,
+                                width: '350px',
+                                height: '225px',
+                                fontSize: 16,
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '15px',
+                                outlineWidth: 3,
+                            }}>
+                                <h4>"{quote.content}"</h4>
+                                <br />
+                                <p>-{quote.author}</p>
+                            </Card>
+                        </div>
+                    )
                 )
-            )
-        }
-        <br />
-    </div>
+            }
+            <br />
+        </div>
     )
 }
 
