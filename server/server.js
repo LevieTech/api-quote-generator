@@ -32,8 +32,8 @@ app.get(`/api/random/`, (req, res) => {
   })
 })
 
-app.get(`/api/search/quotes`, (req, res) => {
-  axios.get(`https://api.quotable.io/search/quotes&query=${req.params.id}`).then((response) => {
+app.post(`/api/search/quotes`, (req, res) => {
+  axios.post(`https://api.quotable.io/search/quotes&query=${req.params.id}`).then((response) => {
     console.log('Checking the response', response.data)
     res.send(response.data);
   }).catch((error) => {
