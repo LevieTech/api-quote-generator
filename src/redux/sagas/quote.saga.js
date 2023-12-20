@@ -3,7 +3,7 @@ import { takeEvery, put} from 'redux-saga/effects';
 
 function* getQuote(action){
     try{
-        const quotes = yield axios.get(`/api/search/quotes&query=${action.payload}`);
+        const quotes = yield axios.get(`/api/search/quotes`, action.payload);
         console.log('Checking quotes.data', quotes.data)
         yield put({ type: 'SET_QUOTES', payload: quotes.data });
 
@@ -14,7 +14,7 @@ function* getQuote(action){
 
 function* getRandomQuote() {
     try {
-        const quotes = yield axios.get(`/api/quotes/`);
+        const quotes = yield axios.get(`/api/random/`);
         yield put({ type: 'SET_QUOTES', payload: quotes.data })
     } catch (error){
         console.log('Error in getRandomQuote', error);

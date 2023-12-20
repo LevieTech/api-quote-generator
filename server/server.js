@@ -22,7 +22,7 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get(`/api/quotes/`, (req, res) => {
+app.get(`/api/random/`, (req, res) => {
   axios.get(`https://api.quotable.io/quotes/random`).then((response) => {
     console.log('Checking the response', response.data)
     res.send(response.data);
