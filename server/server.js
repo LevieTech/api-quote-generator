@@ -32,8 +32,18 @@ app.get(`/api/random/`, (req, res) => {
   })
 })
 
+// app.get(`/api/quotes/:id`, (req, res) => {
+//   axios.get(`https://api.quotable.io/quotes?tags=${req.params.id}`).then((response) => {
+//     console.log('Checking the response', response.data)
+//     res.send(response.data);
+//   }).catch((error) => {
+//     console.log('Error in server.js', error);
+//     res.sendStatus(500);
+//   })
+// })
+
 app.get(`/api/quotes/:id`, (req, res) => {
-  axios.get(`https://api.quotable.io/quotes?tags=${req.params.id}`).then((response) => {
+  axios.get(`https://api.quotable.io/search/quotes?query=${req.params.id}`).then((response) => {
     console.log('Checking the response', response.data)
     res.send(response.data);
   }).catch((error) => {
