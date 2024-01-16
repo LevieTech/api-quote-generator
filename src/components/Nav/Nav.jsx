@@ -35,7 +35,12 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/quotes">Quotes</Link>
+            <Link className="navLink" to="/favoritequotes">
+  Favorite Quotes
+</Link>
 
+
+           
             <Link className="navLink" to="/info">
               Info Page
             </Link>
