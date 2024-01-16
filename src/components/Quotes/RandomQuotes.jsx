@@ -5,6 +5,7 @@ function RandomQuotes() {
   const quotes = useSelector((store) => store.quotes.quotes);
   const favorites = useSelector((store) => store.quotes.favorites);
 
+  // Dispatch to send actions to the Redux store
   const dispatch = useDispatch();
 
   const addToFavorites = (quote) => {
@@ -54,6 +55,7 @@ function RandomQuotes() {
               <p>-{quote.author}</p>
               <Button
                 onClick={() => {
+                    // Check if the quote is in favorites and toggle/switch its state
                   if (!isInFavorites(quote)) {
                     addToFavorites(quote);
                   } else {
