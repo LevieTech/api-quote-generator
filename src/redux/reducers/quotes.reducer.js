@@ -1,3 +1,4 @@
+// Defines the initial state for the reducer
 const initialState = {
     favorites: [],
     quotes: [],

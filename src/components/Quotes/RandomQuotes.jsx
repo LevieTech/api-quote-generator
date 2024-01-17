@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Card, Button } from '@mui/material';
 
 function RandomQuotes() {
+    // Get quotes and favorites from the Redux store using useSelector
   const quotes = useSelector((store) => store.quotes.quotes);
   const favorites = useSelector((store) => store.quotes.favorites);
 
