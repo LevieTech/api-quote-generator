@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Card } from '@mui/material';
+import { Container, Grid, Card } from '@mui/material';
 
 function Quotes() {
 
@@ -17,24 +17,35 @@ function Quotes() {
                         <h3>Please search for some quotes!</h3>
                     ) : (
                         searchQuotes.results.map(quote =>
-                            <div key={quote._id}>
-                                <Card sx={{
-                                boxShadow: 4,
-                                width: '350px',
-                                height: '225px',
-                                fontSize: 16,
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                padding: '15px',
-                                outlineWidth: 3,
-                            }}>
-                                    <h4>"{quote.content}"</h4>
-                                    <br />
-                                    <p>-{quote.author}</p>
-                                </Card>
-                                <br />
+                            <div className="quotesDisplay" key={quote._id}>
+                                <Container fixed>
+                                    <center>
+                                        <Grid >
+                                            <br />
+                                            <Card sx={{
+                                                boxShadow: 4,
+                                                width: '350px',
+                                                height: '225px',
+                                                fontSize: 16,
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                padding: '15px',
+                                                outlineWidth: 3,
+                                            }}>
+                                                <h4>"{quote.content}"</h4>
+                                                <br />
+                                                <p>-{quote.author}</p>
+                                            </Card>
+                                            <br />
+                                        </Grid>
+
+                                    </center>
+                                </Container>
+
+
+
                             </div>
                         )
                         // <></>
