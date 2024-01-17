@@ -75,6 +75,7 @@ function App() {
 
           <ProtectedRoute exact path="/quotes">
             <SearchQuotes />
+            <br />
           </ProtectedRoute>
 
           <Route

@@ -16,10 +16,10 @@ function UserPage() {
     <div className="container">
       <center>
         <h2>Welcome, {user.username}!</h2>
-        <RandomQuotes />
         <div>
           <button className="btn" onClick={randomQuote}>Random</button>
         </div>
+        <RandomQuotes />
       </center>
     </div>
   );
