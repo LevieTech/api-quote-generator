@@ -21,6 +21,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import Quotes from '../Quotes/Quotes';
+import SearchQuotes from '../Quotes/SearchQuotes'
 import RandomQuotes from '../Quotes/RandomQuotes';
 import FavoriteQuotes from '../Quotes/FavoriteQuotes';
 
@@ -74,7 +75,8 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/quotes">
-            <Quotes />
+            <SearchQuotes />
+            <br />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/favoritequotes">
