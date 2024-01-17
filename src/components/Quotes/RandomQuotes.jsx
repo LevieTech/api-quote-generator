@@ -4,6 +4,7 @@ import { Card } from '@mui/material';
 function RandomQuotes() {
 
     const quotes = useSelector(store => store.quotes);
+    const searchQuotes = useSelector(store => store.searchQuotes);
 
     return (
         <div className="randomQuoteDiv">
