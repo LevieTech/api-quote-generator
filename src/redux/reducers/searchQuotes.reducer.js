@@ -1,10 +1,10 @@
-const quoteReducer = (state = [], action) => {
+const searchQuotes = (state = [], action) => {
     switch (action.type) {
-        case 'SET_QUOTES':
+        case 'SET_SEARCH_QUOTES':
             return action.payload;
         default:
             return state;
     }
- }
+}
 
- export default quoteReducer;
+export default searchQuotes;

@@ -112,3 +112,10 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.quotesDisplay {
+  display: inline-block;
+  column-count: auto;
+  align-items: center;
+  justify-content: center;
+}
