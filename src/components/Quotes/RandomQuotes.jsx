@@ -1,10 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Card, Button } from '@mui/material';
+import React, { useEffect }  from 'react';
 
 function RandomQuotes() {
   const quotes = useSelector((store) => store.quotes.quotes);
   const favorites = useSelector((store) => store.quotes.favorites);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'GET_RANDOM' }); // Dispatch action to fetch random quotes
+    dispatch({ type: 'INITIALIZE_FAVORITES' }); // Dispatch action to initialize favorites
+  }, [dispatch]);
+
 
   const addToFavorites = (quote) => {
     dispatch({ type: 'ADD_TO_FAVORITES', payload: quote });

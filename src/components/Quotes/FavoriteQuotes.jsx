@@ -1,9 +1,14 @@
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect }  from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 function FavoriteQuotes() {
     const favoriteQuotes = useSelector((store) => store.quotes.favorites);
+    const dispatch = useDispatch();
+   
+    useEffect(() => {
+      dispatch({ type: 'INITIALIZE_FAVORITES' }); // Dispatch action to initialize favorites
+    }, [dispatch]);
 
     return (
         <>

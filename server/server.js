@@ -8,7 +8,7 @@ const passport = require('./strategies/user.strategy');
 const axios = require('axios');
 // Route includes
 const userRouter = require('./routes/user.router');
-const pool = require('./server/modules/pool.js'); 
+const pool = require('./modules/pool'); 
 
 
 // Body parser middleware
