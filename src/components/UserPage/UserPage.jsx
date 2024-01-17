@@ -1,6 +1,7 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '@mui/material';
 import RandomQuotes from '../Quotes/RandomQuotes';
 
 function UserPage() {
@@ -17,7 +18,7 @@ function UserPage() {
       <center>
         <h2>Welcome, {user.username}!</h2>
         <div>
-          <button className="btn" onClick={randomQuote}>Random</button>
+          <Button className="btn" onClick={randomQuote}>Random</Button>
         </div>
         <RandomQuotes />
       </center>
