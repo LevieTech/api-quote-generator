@@ -1,4 +1,7 @@
 // Check local storage for saved favorites
+//When a user adds a quote to their favorites, the quote object (or its ID) is serialized to JSON (using JSON.stringify) and then stored in the browser's localStorage under the key 'favorites'.
+
+//When the page is refreshed or revisited, the code checks localStorage for the presence of saved favorites using localStorage.getItem('favorites'). If there are saved favorites, they are deserialized (using JSON.parse) and loaded into the Redux store's favorites ARRAY.
 const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
 
 const initialState = {
