@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Card, CardContent, Button, Typography } from '@mui/material';
 
+//Fav Quotes function 
 function FavoriteQuotes() {
   const favoriteQuotes = useSelector((store) => store.quotes.favorites);
   const dispatch = useDispatch();
