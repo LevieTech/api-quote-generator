@@ -52,26 +52,24 @@ function Quotes() {
                                                 },
                                             }}>
                                                 <CardContent>
-                                                    <CardContent>
-                                                        <Typography variant="body1">
-                                                            "{quote.content}"
-                                                        </Typography>
-                                                        <br />
-                                                        <Typography variant="h8">- {quote.author}</Typography>
-                                                        <IconButton
-                                                            onClick={() => {
-                                                                if (!isInFavorites(quote)) {
-                                                                    addToFavorites(quote);
-                                                                } else {
-                                                                    removeFromFavorites(quote);
-                                                                }
-                                                            }}
-                                                        >
-                                                            <FavoriteIcon
-                                                                color={isInFavorites(quote) ? 'primary' : 'secondayr'}
-                                                            />
-                                                        </IconButton>
-                                                    </CardContent>
+                                                    <Typography variant="body1">
+                                                        "{quote.content}"
+                                                    </Typography>
+                                                    <br />
+                                                    <Typography variant="h8">- {quote.author}</Typography>
+                                                    <IconButton
+                                                        onClick={() => {
+                                                            if (!isInFavorites(quote)) {
+                                                                addToFavorites(quote);
+                                                            } else {
+                                                                removeFromFavorites(quote);
+                                                            }
+                                                        }}
+                                                    >
+                                                        <FavoriteIcon
+                                                            color={isInFavorites(quote) ? 'primary' : 'secondayr'}
+                                                        />
+                                                    </IconButton>
                                                 </CardContent>
                                             </Card>
                                             <br />
