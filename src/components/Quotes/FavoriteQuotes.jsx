@@ -108,7 +108,7 @@ const isInFavorites = (quote) => {
                 <Typography>Are you sure you want to remove this quote from Favorites?</Typography>
             </DialogContent>
               <DialogActions>
-                <Button onclick={closeConfirmationDialog}      color="primary">
+                <Button onClick={closeConfirmationDialog}      color="primary">
                   Cancel
                 </Button>
 
