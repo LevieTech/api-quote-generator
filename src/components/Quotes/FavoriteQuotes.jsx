@@ -13,6 +13,7 @@ function FavoriteQuotes() {
   }, [dispatch]);
 
   const removeFromFavorites = (quote) => {
+    alert('Are you sure you want to remove this quote from Favorites?');
     dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
   };
 

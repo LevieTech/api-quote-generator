@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Container, Grid, Card, IconButton } from '@mui/material';
+import { Container, Grid, Card, IconButton, CardContent, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Quotes() {
@@ -14,14 +14,13 @@ function Quotes() {
     };
 
     const removeFromFavorites = (quote) => {
+        alert('Are you sure you want to remove this quote from Favorites?')
         dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
     };
 
     const isInFavorites = (quote) => {
         return favorites.some((favQuote) => favQuote._id === quote._id);
     };
-
-
 
     return (
         <center>
@@ -52,26 +51,31 @@ function Quotes() {
                                                     transform: 'scale(1.1)',
                                                 },
                                             }}>
-                                                <h4>"{quote.content}"</h4>
-                                                <br />
-                                                <p>-{quote.author}</p>
-                                                <IconButton
-                                                    onClick={() => {
-                                                        if (!isInFavorites(quote)) {
-                                                            addToFavorites(quote);
-                                                        } else {
-                                                            removeFromFavorites(quote);
-                                                        }
-                                                    }}
-                                                >
-                                                    <FavoriteIcon
-                                                        color={isInFavorites(quote) ? 'primary' : 'secondayr'}
-                                                    />
-                                                </IconButton>
+                                                <CardContent>
+                                                    <CardContent>
+                                                        <Typography variant="body1">
+                                                            "{quote.content}"
+                                                        </Typography>
+                                                        <br />
+                                                        <Typography variant="h8">- {quote.author}</Typography>
+                                                        <IconButton
+                                                            onClick={() => {
+                                                                if (!isInFavorites(quote)) {
+                                                                    addToFavorites(quote);
+                                                                } else {
+                                                                    removeFromFavorites(quote);
+                                                                }
+                                                            }}
+                                                        >
+                                                            <FavoriteIcon
+                                                                color={isInFavorites(quote) ? 'primary' : 'secondayr'}
+                                                            />
+                                                        </IconButton>
+                                                    </CardContent>
+                                                </CardContent>
                                             </Card>
                                             <br />
                                         </Grid>
-
                                     </center>
                                 </Container>
                             </div>
