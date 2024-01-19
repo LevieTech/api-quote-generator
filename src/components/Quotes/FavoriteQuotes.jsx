@@ -1,27 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Grid, Card, CardContent, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Dialog, DialogActions, Button } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, Button } from '@mui/material';
+
 
 //Fav Quotes function 
 function FavoriteQuotes() {
+  const [confirmationDialogOpen, setConfirmationDialogOpen ] = useState(false); // State for dialog visibility
+  const [quoteToRemove, setQuoteToRemove] = useState(null); //State to store the quote to be removed
+
   const favoriteQuotes = useSelector((store) => store.quotes.favorites);
   const dispatch = useDispatch();
+
+  const closeConfirmationDialog = () => {
+    setConfirmationDialogOpen (false); // Close the confirmation
+    setQuoteToRemove(null); // Clear the selected quote
+  }
+    closeConfirmationDialog(); // Close the confirmation d
 
   useEffect(() => {
     dispatch({ type: 'INITIALIZE_FAVORITES' }); // Dispatch action to initialize favorites
   }, [dispatch]);
 
-  const removeFromFavorites = (quote) => {
-    alert('Are you sure you want to remove this quote from Favorites?');
-    dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
-  };
-
-  const isInFavorites = (quote) => {
-    return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
+const isInFavorites = (quote) => {
+  return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
 };
 
+
+
+//?Sams alert
+  // const removeFromFavorites = (quote) => {
+  //   alert('Are you sure you want to remove this quote from Favorites?');
+  //   dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
+  // };
+
+ 
   return (
     <center>
 
