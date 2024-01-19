@@ -13,11 +13,26 @@ function FavoriteQuotes() {
   const favoriteQuotes = useSelector((store) => store.quotes.favorites);
   const dispatch = useDispatch();
 
+const openConfirmationDialog = (quote) => {
+  console.log("Opening confirmation dialog for quote:", quote);
+  setQuoteToRemove(quote); //Set the quote to be removed
+  setConfirmationDialogOpen(true); // Open the confirmation dialog
+}
+
+//Function to close the confirmation dialong and clear the selected quote
   const closeConfirmationDialog = () => {
+    console.log("Closing confirmatio dialog");
     setConfirmationDialogOpen (false); // Close the confirmation
     setQuoteToRemove(null); // Clear the selected quote
+  };
+
+  const removeFromFavorites = () => {
+    if (quoteToRemove) {
+      dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quoteToRemove });
+      setQuoteToRemove(null);// Clear the selected quote after removal
+    }
+    closeConfirmationDialog(); // Close conf. dialog
   }
-    closeConfirmationDialog(); // Close the confirmation d
 
   useEffect(() => {
     dispatch({ type: 'INITIALIZE_FAVORITES' }); // Dispatch action to initialize favorites
@@ -44,7 +59,7 @@ const isInFavorites = (quote) => {
         <p>No favorite quotes added yet.</p>
       ) : (
         favoriteQuotes.map(quote => (
-          <div className="favQuotesDisplay">
+          <div className="favQuotesDisplay" key={quote._id}>
             <Container fixed>
               <center>
                 <Grid>
@@ -74,7 +89,7 @@ const isInFavorites = (quote) => {
                       </Typography>
                       <br/>
                       <Typography variant="h8">- {quote.author}</Typography>
-                      <IconButton onClick={() => removeFromFavorites(quote)}>
+                      <IconButton onClick={() => openConfirmationDialog(quote)}>
                         <FavoriteIcon  color={isInFavorites(quote) ? 'primary' : 'secondayr'}/>
                       </IconButton>
                     </CardContent>
@@ -86,7 +101,23 @@ const isInFavorites = (quote) => {
           </div>
         ))
       )}
-    </center>
+
+      {/* Confirmation Dialog */}
+          <Dialog open={confirmationDialogOpen} onClose={closeConfirmationDialog}>
+            <DialogContent>
+                <Typography>Are you sure you want to remove this quote from Favorites?</Typography>
+            </DialogContent>
+              <DialogActions>
+                <Button onclick={closeConfirmationDialog}      color="primary">
+                  Cancel
+                </Button>
+
+                <Button onClick={removeFromFavorites} color="primary">
+                  Ok
+                </Button>
+              </DialogActions>
+          </Dialog>
+          </center>
   );
 }
 
