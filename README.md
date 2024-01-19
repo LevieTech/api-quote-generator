@@ -83,7 +83,9 @@ Keep in mind that once you using the login route, Postman will manage your sessi
 3. Click `Collections` and `Send` the following three calls in order:
    1. `POST /api/user/register` registers a new user, see body to change username/password
    2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
+   3. `GET /api/user` will      
+   ------
+    user information, by default it's not very much
 
 After running the login route above, you can try any other route you've created that requires a logged in user!
 

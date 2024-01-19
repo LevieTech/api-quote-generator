@@ -18,6 +18,7 @@ function* getRandomQuote() {
     try {
         const quotes = yield axios.get(`/api/random/`);
         yield put({ type: 'SET_QUOTES', payload: quotes.data })
+        yield put({ type: 'SET_FAVORITES' }); // Dispatch action to initialize favorites
     } catch (error) {
         console.log('Error in getRandomQuote', error);
     }
