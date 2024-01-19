@@ -19,36 +19,39 @@ function FavoriteQuotes() {
   return (
     <>
       <div className="favQuotes">
-        <h2>Favorite Quotes</h2>
-        {favoriteQuotes.length === 0 ? (
-          <p>No favorite quotes added yet.</p>
-        ) : (
-          <div>
-            {favoriteQuotes.map((quote) => (
-              <Card
-                key={quote._id}
-                sx={{
-                  boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.2s',
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                  },
-                  width: '350px',
-                  margin: '10px',
-                }}
-              >
-                <CardContent>
-                  <Typography variant="body1">
-                    "{quote.content}" - {quote.author}
-                  </Typography>
-                  <IconButton onClick={() => removeFromFavorites(quote)}>
-                    <FavoriteIcon />
-                  </IconButton>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
+        <center>
+          <h2>Favorite Quotes</h2>
+          {favoriteQuotes.length === 0 ? (
+            <p>No favorite quotes added yet.</p>
+          ) : (
+            <div>
+              {favoriteQuotes.map((quote) => (
+                <Card
+                  key={quote._id}
+                  sx={{
+                    boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.2)',
+                    transition: 'transform 0.2s',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    },
+                    width: '350px',
+                    margin: '10px',
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="body1">
+                      "{quote.content}" - {quote.author}
+                    </Typography>
+                    <IconButton onClick={() => removeFromFavorites(quote)}>
+                      <FavoriteIcon />
+                    </IconButton>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </center>
+
       </div>
     </>
   );

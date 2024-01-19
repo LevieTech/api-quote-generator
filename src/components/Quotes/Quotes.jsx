@@ -1,13 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Container, Grid, Card } from '@mui/material';
+import { Container, Grid, Card, IconButton } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Quotes() {
 
     const searchQuotes = useSelector(store => store.searchQuotes);
+    const favorites = useSelector((store) => store.quotes.favorites);
     const dispatch = useDispatch();
 
-    console.log('Checking the searched quotes', searchQuotes.results)
+    const addToFavorites = (quote) => {
+        dispatch({ type: 'ADD_TO_FAVORITES', payload: quote });
+    };
+
+    const removeFromFavorites = (quote) => {
+        dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
+    };
+
+    const isInFavorites = (quote) => {
+        return favorites.some((favQuote) => favQuote._id === quote._id);
+    };
+
+
 
     return (
         <center>
@@ -37,6 +51,19 @@ function Quotes() {
                                                 <h4>"{quote.content}"</h4>
                                                 <br />
                                                 <p>-{quote.author}</p>
+                                                <IconButton
+                                                    onClick={() => {
+                                                        if (!isInFavorites(quote)) {
+                                                            addToFavorites(quote);
+                                                        } else {
+                                                            removeFromFavorites(quote);
+                                                        }
+                                                    }}
+                                                >
+                                                    <FavoriteIcon
+                                                        color={isInFavorites(quote) ? 'primary' : 'secondayr'}
+                                                    />
+                                                </IconButton>
                                             </Card>
                                             <br />
                                         </Grid>
