@@ -17,6 +17,10 @@ function FavoriteQuotes() {
     dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
   };
 
+  const isInFavorites = (quote) => {
+    return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
+};
+
   return (
     <center>
 
@@ -56,7 +60,7 @@ function FavoriteQuotes() {
                       <br/>
                       <Typography variant="h8">- {quote.author}</Typography>
                       <IconButton onClick={() => removeFromFavorites(quote)}>
-                        <FavoriteIcon />
+                        <FavoriteIcon  color={isInFavorites(quote) ? 'primary' : 'secondayr'}/>
                       </IconButton>
                     </CardContent>
                   </Card>
