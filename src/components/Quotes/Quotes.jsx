@@ -47,6 +47,10 @@ function Quotes() {
                                                 justifyContent: 'center',
                                                 padding: '15px',
                                                 outlineWidth: 3,
+                                                transition: 'transform 0.2s',
+                                                '&:hover': {
+                                                    transform: 'scale(1.1)',
+                                                },
                                             }}>
                                                 <h4>"{quote.content}"</h4>
                                                 <br />
@@ -70,12 +74,8 @@ function Quotes() {
 
                                     </center>
                                 </Container>
-
-
-
                             </div>
                         )
-                        // <></>
                     )
                 }
             </div>
