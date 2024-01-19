@@ -41,8 +41,8 @@ function FavoriteQuotes() {
                   <Typography variant="body1">
                     "{quote.content}" - {quote.author}
                   </Typography>
-                  <IconButton onClick={() => removeFromFavorites(quote)}>
-                    <FavoriteBorderOutlinedIcon color="primary" />
+                  <IconButton onClick={() => removeFromFavorites(quote)} style={{ color: 'grey' }}>
+                    <FavoriteBorderOutlinedIcon />
                   </IconButton>
                 </CardContent>
               </Card>
