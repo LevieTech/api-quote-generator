@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Card, CardContent, Button, Typography } from '@mui/material';
+import { Card, CardContent, IconButton, Typography } from '@mui/material';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteTwoTone';
 
 //Fav Quotes function 
 function FavoriteQuotes() {
@@ -40,9 +41,9 @@ function FavoriteQuotes() {
                   <Typography variant="body1">
                     "{quote.content}" - {quote.author}
                   </Typography>
-                  <Button onClick={() => removeFromFavorites(quote)}>
-                    Remove from Favorites
-                  </Button>
+                  <IconButton onClick={() => removeFromFavorites(quote)}>
+                    <FavoriteBorderOutlinedIcon color="primary" />
+                  </IconButton>
                 </CardContent>
               </Card>
             ))}

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Card, Button } from '@mui/material';
+import { Card, IconButton } from '@mui/material';
 import React, { useEffect }  from 'react';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function RandomQuotes() {
   const quotes = useSelector((store) => store.quotes.quotes);
@@ -50,7 +51,7 @@ function RandomQuotes() {
               <h4>"{quote.content}"</h4>
               <br />
               <p>-{quote.author}</p>
-              <Button
+              <IconButton
                 onClick={() => {
                   if (!isInFavorites(quote)) {
                     addToFavorites(quote);
@@ -59,8 +60,10 @@ function RandomQuotes() {
                   }
                 }}
               >
-                {isInFavorites(quote) ? 'Remove from Favorites' : 'Add to Favorites'}
-              </Button>
+                <FavoriteIcon
+                color={isInFavorites(quote) ? 'secondayr' : 'primary'}
+              />
+                </IconButton>
             </Card>
           </div>
         ))
@@ -71,3 +74,5 @@ function RandomQuotes() {
 }
 
 export default RandomQuotes;
+
+//npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
