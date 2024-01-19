@@ -119,3 +119,10 @@ input {
   align-items: center;
   justify-content: center;
 }
+
+.favQuotesDisplay {
+  display: inline-block;
+  column-count: auto;
+  align-items: center;
+  justify-content: center;
+}

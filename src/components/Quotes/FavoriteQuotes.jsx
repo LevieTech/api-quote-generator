@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Card, CardContent, IconButton, Typography } from '@mui/material';
+import { Container, Grid, Card, CardContent, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 //Fav Quotes function 
@@ -13,44 +13,65 @@ function FavoriteQuotes() {
   }, [dispatch]);
 
   const removeFromFavorites = (quote) => {
+    alert('Are you sure you want to remove this quote from Favorites?');
     dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
   };
 
+  const isInFavorites = (quote) => {
+    return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
+};
+
   return (
-    <>
-      <div className="favQuotes">
-        <h2>Favorite Quotes</h2>
-        {favoriteQuotes.length === 0 ? (
-          <p>No favorite quotes added yet.</p>
-        ) : (
-          <div>
-            {favoriteQuotes.map((quote) => (
-              <Card
-                key={quote._id}
-                sx={{
-                  boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.2s',
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                  },
-                  width: '350px',
-                  margin: '10px',
-                }}
-              >
-                <CardContent>
-                  <Typography variant="body1">
-                    "{quote.content}" - {quote.author}
-                  </Typography>
-                  <IconButton onClick={() => removeFromFavorites(quote)}>
-                    <FavoriteIcon />
-                  </IconButton>
-                </CardContent>
-              </Card>
-            ))}
+    <center>
+
+      <h2>Favorite Quotes</h2>
+      {favoriteQuotes.length === 0 ? (
+        <p>No favorite quotes added yet.</p>
+      ) : (
+        favoriteQuotes.map(quote => (
+          <div className="favQuotesDisplay">
+            <Container fixed>
+              <center>
+                <Grid>
+                  <br />
+                  <Card
+                    key={quote._id}
+                    sx={{
+                      boxShadow: 4,
+                      width: '350px',
+                      height: '225px',
+                      fontSize: 16,
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '15px',
+                      outlineWidth: 3,
+                      transition: 'transform 0.2s',
+                      '&:hover': {
+                        transform: 'scale(1.1)',
+                      },
+                    }}
+                  >
+                    <CardContent>
+                      <Typography variant="body1">
+                        "{quote.content}" 
+                      </Typography>
+                      <br/>
+                      <Typography variant="h8">- {quote.author}</Typography>
+                      <IconButton onClick={() => removeFromFavorites(quote)}>
+                        <FavoriteIcon  color={isInFavorites(quote) ? 'primary' : 'secondayr'}/>
+                      </IconButton>
+                    </CardContent>
+                  </Card>
+                  <br /><br />
+                </Grid>
+              </center>
+            </Container>
           </div>
-        )}
-      </div>
-    </>
+        ))
+      )}
+    </center>
   );
 }
 
