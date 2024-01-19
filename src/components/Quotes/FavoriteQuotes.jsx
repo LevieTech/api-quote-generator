@@ -50,8 +50,10 @@ function FavoriteQuotes() {
                   >
                     <CardContent>
                       <Typography variant="body1">
-                        "{quote.content}" - {quote.author}
+                        "{quote.content}" 
                       </Typography>
+                      <br/>
+                      <Typography variant="h8">- {quote.author}</Typography>
                       <IconButton onClick={() => removeFromFavorites(quote)}>
                         <FavoriteIcon />
                       </IconButton>
