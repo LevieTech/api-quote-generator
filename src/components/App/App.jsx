@@ -24,6 +24,7 @@ import Quotes from '../Quotes/Quotes';
 import SearchQuotes from '../Quotes/SearchQuotes'
 import RandomQuotes from '../Quotes/RandomQuotes';
 import FavoriteQuotes from '../Quotes/FavoriteQuotes';
+import SearchByAuthor from '../Quotes/SearchByAuthor';
 
 function App() {
   const dispatch = useDispatch();
@@ -81,6 +82,10 @@ function App() {
 
           <ProtectedRoute exact path="/favoritequotes">
             <FavoriteQuotes />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/searchbyauthor">
+            <SearchByAuthor />
           </ProtectedRoute>
 
 
