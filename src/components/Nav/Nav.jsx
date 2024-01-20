@@ -14,43 +14,34 @@ function Nav() {
           <Link to="/home">
             <img src="./api-quote-generator-header.png" alt="API Quote Generator" width="75%" height="75%" style={{ maxWidth: 1100, }} />
           </Link>
-        </div>
+          </div>
       </center>
 
-      <div className="navLink">
-        {/* If no user is logged in, show these links */}
-        {user.id === null &&
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
-        }
+          <div className="nav">
+            {/* If no user is logged in, show these links */}
+            {user.id === null &&
+              // If there's no user, show login/registration links
+              <Link className="navLink" to="/login">
+                Login / Register
+              </Link>
+            }
 
 
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
+            {/* If a user is logged in, show these links */}
+            {user.id && (
+              <>
+                <Link className="navLink" to="/user"> Home </Link>
+                <Link className="navLink" to="/quotes"> Search </Link>
+                <Link className="navLink" to="/favoritequotes"> Favorites </Link>
+                <Link className="navLink" to="/info"> About </Link>
 
-            <Link className="navLink" to="/quotes">Quotes</Link>
-            <Link className="navLink" to="/favoritequotes">
-  Favorite Quotes
-</Link>
-
-
-           
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
-            <LogOutButton className="navLink" />
-          </>
-        )}
-      </div>
-    </>
-  );
+                <LogOutButton className="navLink" />
+              </>
+            )}
+          </div>
+          <br/> <br/> <br/>
+        </>
+        );
 }
 
-export default Nav;
+        export default Nav;
