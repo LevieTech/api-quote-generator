@@ -7,22 +7,22 @@ import { Dialog, DialogActions, DialogContent, Button } from '@mui/material';
 
 //Fav Quotes function 
 function FavoriteQuotes() {
-  const [confirmationDialogOpen, setConfirmationDialogOpen ] = useState(false); // State for dialog visibility
+  const [confirmationDialogOpen, setConfirmationDialogOpen] = useState(false); // State for dialog visibility
   const [quoteToRemove, setQuoteToRemove] = useState(null); //State to store the quote to be removed
 
   const favoriteQuotes = useSelector((store) => store.quotes.favorites);
   const dispatch = useDispatch();
 
-const openConfirmationDialog = (quote) => {
-  console.log("Opening confirmation dialog for quote:", quote);
-  setQuoteToRemove(quote); //Set the quote to be removed
-  setConfirmationDialogOpen(true); // Open the confirmation dialog
-}
+  const openConfirmationDialog = (quote) => {
+    console.log("Opening confirmation dialog for quote:", quote);
+    setQuoteToRemove(quote); //Set the quote to be removed
+    setConfirmationDialogOpen(true); // Open the confirmation dialog
+  }
 
-//Function to close the confirmation dialong and clear the selected quote
+  //Function to close the confirmation dialong and clear the selected quote
   const closeConfirmationDialog = () => {
-    console.log("Closing confirmatio dialog");
-    setConfirmationDialogOpen (false); // Close the confirmation
+    console.log("Closing confirmation dialog");
+    setConfirmationDialogOpen(false); // Close the confirmation
     setQuoteToRemove(null); // Clear the selected quote
   };
 
@@ -38,19 +38,19 @@ const openConfirmationDialog = (quote) => {
     dispatch({ type: 'INITIALIZE_FAVORITES' }); // Dispatch action to initialize favorites
   }, [dispatch]);
 
-const isInFavorites = (quote) => {
-  return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
-};
+  const isInFavorites = (quote) => {
+    return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
+  };
 
 
 
-//?Sams alert
+  //?Sams alert
   // const removeFromFavorites = (quote) => {
   //   alert('Are you sure you want to remove this quote from Favorites?');
   //   dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
   // };
 
- 
+
   return (
     <center>
 
@@ -85,12 +85,12 @@ const isInFavorites = (quote) => {
                   >
                     <CardContent>
                       <Typography variant="body1">
-                        "{quote.content}" 
+                        "{quote.content}"
                       </Typography>
-                      <br/>
+                      <br />
                       <Typography variant="h8">- {quote.author}</Typography>
                       <IconButton onClick={() => openConfirmationDialog(quote)}>
-                        <FavoriteIcon  color={isInFavorites(quote) ? 'primary' : 'secondayr'}/>
+                        <FavoriteIcon color={isInFavorites(quote) ? 'primary' : 'secondary'} />
                       </IconButton>
                     </CardContent>
                   </Card>
@@ -103,21 +103,21 @@ const isInFavorites = (quote) => {
       )}
 
       {/* Confirmation Dialog */}
-          <Dialog open={confirmationDialogOpen} onClose={closeConfirmationDialog}>
-            <DialogContent>
-                <Typography>Are you sure you want to remove this quote from Favorites?</Typography>
-            </DialogContent>
-              <DialogActions>
-                <Button onClick={closeConfirmationDialog}      color="primary">
-                  Cancel
-                </Button>
+      <Dialog open={confirmationDialogOpen} onClose={closeConfirmationDialog}>
+        <DialogContent>
+          <Typography>Are you sure you want to remove this quote from Favorites?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="contained" onClick={closeConfirmationDialog} color="primary">
+            Cancel
+          </Button>
 
-                <Button onClick={removeFromFavorites} color="primary">
-                  Ok
-                </Button>
-              </DialogActions>
-          </Dialog>
-          </center>
+          <Button variant="contained" onClick={removeFromFavorites} color="primary">
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </center>
   );
 }
 
