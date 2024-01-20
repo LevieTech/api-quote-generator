@@ -21,8 +21,8 @@ function SearchQuotes() {
                 <h2>Search for a quote by keyword!</h2>
                 <br />
                 <form onSubmit={handleSubmit}>
-                    <TextField fullWidth variant="standard" style={{ maxWidth: '60%', }} type="search" value={search} onChange={(event) => setSearch(event.target.value)} />
-                    <Button className="btn">Submit</Button>
+                    <TextField fullWidth variant="standard" style={{ maxWidth: '25%', }} type="search" value={search} onChange={(event) => setSearch(event.target.value)} />
+                    <Button className="btn" type="submit">Submit</Button>
                 </form>
                 <br /><br />
                 <Quotes />

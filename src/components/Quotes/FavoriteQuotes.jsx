@@ -1,26 +1,56 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Grid, Card, CardContent, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Dialog, DialogActions, DialogContent, Button } from '@mui/material';
+
 
 //Fav Quotes function 
 function FavoriteQuotes() {
+  const [confirmationDialogOpen, setConfirmationDialogOpen ] = useState(false); // State for dialog visibility
+  const [quoteToRemove, setQuoteToRemove] = useState(null); //State to store the quote to be removed
+
   const favoriteQuotes = useSelector((store) => store.quotes.favorites);
   const dispatch = useDispatch();
+
+const openConfirmationDialog = (quote) => {
+  console.log("Opening confirmation dialog for quote:", quote);
+  setQuoteToRemove(quote); //Set the quote to be removed
+  setConfirmationDialogOpen(true); // Open the confirmation dialog
+}
+
+//Function to close the confirmation dialong and clear the selected quote
+  const closeConfirmationDialog = () => {
+    console.log("Closing confirmatio dialog");
+    setConfirmationDialogOpen (false); // Close the confirmation
+    setQuoteToRemove(null); // Clear the selected quote
+  };
+
+  const removeFromFavorites = () => {
+    if (quoteToRemove) {
+      dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quoteToRemove });
+      setQuoteToRemove(null);// Clear the selected quote after removal
+    }
+    closeConfirmationDialog(); // Close conf. dialog
+  }
 
   useEffect(() => {
     dispatch({ type: 'INITIALIZE_FAVORITES' }); // Dispatch action to initialize favorites
   }, [dispatch]);
 
-  const removeFromFavorites = (quote) => {
-    alert('Are you sure you want to remove this quote from Favorites?');
-    dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
-  };
-
-  const isInFavorites = (quote) => {
-    return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
+const isInFavorites = (quote) => {
+  return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
 };
 
+
+
+//?Sams alert
+  // const removeFromFavorites = (quote) => {
+  //   alert('Are you sure you want to remove this quote from Favorites?');
+  //   dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
+  // };
+
+ 
   return (
     <center>
 
@@ -29,7 +59,7 @@ function FavoriteQuotes() {
         <p>No favorite quotes added yet.</p>
       ) : (
         favoriteQuotes.map(quote => (
-          <div className="favQuotesDisplay">
+          <div className="favQuotesDisplay" key={quote._id}>
             <Container fixed>
               <center>
                 <Grid>
@@ -59,7 +89,7 @@ function FavoriteQuotes() {
                       </Typography>
                       <br/>
                       <Typography variant="h8">- {quote.author}</Typography>
-                      <IconButton onClick={() => removeFromFavorites(quote)}>
+                      <IconButton onClick={() => openConfirmationDialog(quote)}>
                         <FavoriteIcon  color={isInFavorites(quote) ? 'primary' : 'secondayr'}/>
                       </IconButton>
                     </CardContent>
@@ -71,7 +101,23 @@ function FavoriteQuotes() {
           </div>
         ))
       )}
-    </center>
+
+      {/* Confirmation Dialog */}
+          <Dialog open={confirmationDialogOpen} onClose={closeConfirmationDialog}>
+            <DialogContent>
+                <Typography>Are you sure you want to remove this quote from Favorites?</Typography>
+            </DialogContent>
+              <DialogActions>
+                <Button onClick={closeConfirmationDialog}      color="primary">
+                  Cancel
+                </Button>
+
+                <Button onClick={removeFromFavorites} color="primary">
+                  Ok
+                </Button>
+              </DialogActions>
+          </Dialog>
+          </center>
   );
 }
 
