@@ -44,6 +44,8 @@ Button
 .btn_sizeMin {
   min-height: 50px;
   min-width: 100px;
+  background-color: #d09f5a;
+
 }
 
 .btn_sizeSm {

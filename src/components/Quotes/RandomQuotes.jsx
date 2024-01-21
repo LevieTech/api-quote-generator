@@ -64,7 +64,7 @@ function RandomQuotes() {
                                     }}
                                 >
                                     <FavoriteIcon
-                                        color={isInFavorites(quote) ? 'primary' : 'secondayr'}
+                                        color={isInFavorites(quote) ? 'primary' : 'secondary'}
                                     />
                                 </IconButton>
                             </CardContent>
