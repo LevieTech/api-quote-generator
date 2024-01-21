@@ -18,7 +18,7 @@ function UserPage() {
       <center>
         <h2>Welcome, {user.username}!</h2>
         <div>
-          <Button className="btn" onClick={randomQuote}>Random</Button>
+          <Button variant="contained" className="btn" onClick={randomQuote}> Generate Random Quote</Button>
         </div>
         <RandomQuotes />
       </center>

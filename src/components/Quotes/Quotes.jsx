@@ -27,7 +27,9 @@ function Quotes() {
             <div className="quotesDiv">
                 {
                     searchQuotes.length === 0 ? (
-                        <h3>Please search for some quotes!</h3>
+                        <h4>Please search for quotes using the search bar above.
+                            Results will display here.
+                        </h4>
                     ) : (
                         searchQuotes.results.map(quote =>
                             <div className="quotesDisplay" key={quote._id}>
@@ -67,7 +69,7 @@ function Quotes() {
                                                         }}
                                                     >
                                                         <FavoriteIcon
-                                                            color={isInFavorites(quote) ? 'primary' : 'secondayr'}
+                                                            color={isInFavorites(quote) ? 'primary' : 'secondary'}
                                                         />
                                                     </IconButton>
                                                 </CardContent>

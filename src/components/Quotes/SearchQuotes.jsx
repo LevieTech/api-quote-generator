@@ -22,7 +22,7 @@ function SearchQuotes() {
                 <br />
                 <form onSubmit={handleSubmit}>
                     <TextField fullWidth variant="standard" style={{ maxWidth: '25%', }} type="search" value={search} onChange={(event) => setSearch(event.target.value)} />
-                    <Button className="btn" type="submit">Submit</Button>
+                    <Button variant="contained" className="btn" type="submit">Submit</Button>
                 </form>
                 <br /><br />
                 <Quotes />

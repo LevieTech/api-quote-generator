@@ -8,15 +8,24 @@
   outline-style:inset;
 } */
 
+/*TODO tried to make a background image work with 
+the header but it wasn't lining up right.. might revisit*/
 .nav {
   /* flex box layout */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin-bottom: -70px;
+  margin-bottom: -40px;
+  padding-bottom: 10px;
+  /* background-image: url(/src/Images/texturedpaper.png);
+  background-position-x: -100px;
+  background-position-y: -100px; 
+  background-repeat:no-repeat; */
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
   background-color: #bda686;
-  overflow: hidden;
-  width: auto;
+  width: 100%;
 }
 
 .nav a {
@@ -26,7 +35,7 @@
 .navLink {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   font-weight: bold;
   color: black;
   background-color: #bda686;
@@ -43,7 +52,6 @@
   outline: 0;
 }
 
-/*TODO Need to work on this later, gotta split some divs up. -LS
-/* .navLink:hover {
-  background-color: #008183;
-} */
+.navLink:hover {
+  background-color: #eacca2;
+}
