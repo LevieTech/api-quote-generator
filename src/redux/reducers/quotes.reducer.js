@@ -7,6 +7,7 @@ const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
 const initialState = {
   favorites: savedFavorites || [], // Initialize with stored favorites, if any
   quotes: [],
+  
 };
   
   const quoteReducer = (state = initialState, action) => {

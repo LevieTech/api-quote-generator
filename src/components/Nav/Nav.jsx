@@ -38,6 +38,9 @@ function Nav() {
             <Link className="navLink" to="/favoritequotes">
   Favorite Quotes
 </Link>
+<Link className="navLink" to="/searchbyauthor">
+  Search Quotes by Author
+</Link>
 
 
            

@@ -16,9 +16,41 @@ const authorSearchResults = useSelector((state) => state.authorSearchResults);
 
     return(
         <div>
-            <Typography>
-                
+            <Typography varient="h2">
+                Search by Author
             </Typography>
+                <form onSubmit={handleSubmit}>
+            <TextField 
+            fullWidth
+            variant='standard'
+            type='text'
+            value={author}
+            onChange={(event) => setAuthor(event.target.value)}
+            placeholder= "Enter author's name">
+            </TextField>
+                <Button
+                type="submit">
+                    Search
+                </Button>
+                </form>
+
+            {authorSearchResults ? (
+                authorSearchResults.map((quote) => (
+                    <div
+                    key={quote.id}>
+                        <Typography
+                            varient="body1">
+                                {quote.content}
+                            </Typography>
+                        <Typography
+                            varient="body2">
+                                {quote.author}
+                        </Typography>
+                    </div>
+                ))
+            ) : (
+                <Typography variant="body1">No results found.</Typography>
+            )}
 
 
         </div>
