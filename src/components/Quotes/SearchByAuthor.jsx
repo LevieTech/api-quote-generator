@@ -8,6 +8,7 @@ function SearchByAuthor() {
 
 const handleSubmit = () => {
     // Dispatch an action to update the search query by author
+    console.log('Author being searched:', author);
     dispatch({ type: 'SET_SEARCH_BY_AUTHOR', payload: author });
 };
 

@@ -24,9 +24,21 @@ function* getRandomQuote() {
     }
 }
 
+function* searchByAuthor(action){
+    try{
+        console.log('Searching for author:', action.payload);
+        const quotes = yield axios.get(`/api/search/authors/${action.payload}`);
+        console.log('Response from server:', quotes.data); 
+        yield put ({ type: 'SET_SEARCH_BY_AUTHOR', payload: quotes.data})
+    } catch (error) {
+        console.error('Error in searchByAuthor', error);
+    }
+}
+
 function* quoteSaga(){
     yield takeEvery('SET_SEARCH', getQuote);
     yield takeEvery('GET_RANDOM', getRandomQuote);
+    yield takeEvery('SET_SEARCH_BY_AUTHOR',searchByAuthor );
 }
 
 export default quoteSaga;

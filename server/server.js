@@ -44,6 +44,45 @@ app.get(`/api/quotes/:id`, (req, res) => {
   })
 })
 
+//Search for Author
+// app.get(`/api/search/author/:authorId`, (req, res) => {
+//   const authorId = req.params.authorId; // Gets the author's ID from the URL
+//   console.log('Received request for authorId:', authorId);
+//   console.log('Author ID:', authorId);
+  
+//   axios.get(`https://api.quotable.io/authors/${authorId}`).then((response) => {
+//     console.log('Quotable API Response:', response);
+//     console.log('Checking the response', response.data)
+//     res.send(response.data);
+//   }).catch((error) => {
+//     console.log('Quotable API Error:', error);
+//     console.log('Error in server.js', error);
+//     res.sendStatus(500);
+//   })
+// })
+
+
+
+
+// const authorId = 'pablo-picasso';
+
+// const options = {
+//   method: 'GET',
+//   url: `https://api.quotable.io/authors/${authorId}`, // Use the author's ID in the URL
+//   headers: { Accept: 'application/json' }
+// };
+
+// try {
+//   const { data } = await axios.request(options);
+//   console.log(data);
+// } catch (error) {
+//   console.error(error);
+// }
+
+// const apiUrl = `https://api.quotable.io/authors/${authorId}`;
+// console.log('Axios Request URL:', apiUrl);
+
+
 /* CRUD Endpoints for Quotes */
 
 // Create a new quote
