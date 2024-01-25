@@ -22,6 +22,11 @@ function Quotes() {
         return favorites.some((favQuote) => favQuote._id === quote._id);
     };
 
+
+    console.log('Checking to see the results', searchQuotes.results);
+    console.log('Checking to see if theres more pages to search through', searchQuotes.page);
+
+
     return (
         <center>
             <div className="quotesDiv">
