@@ -35,7 +35,7 @@ app.get(`/api/random/`, (req, res) => {
 
 
 app.get(`/api/quotes/:id`, (req, res) => {
-  axios.get(`https://api.quotable.io/search/quotes?query=${req.params.id}`).then((response) => {
+  axios.get(`https://api.quotable.io/search/quotes?query=${req.params.id}&page=${req.params.id}`).then((response) => {
     console.log('Checking the response', response.data)
     res.send(response.data);
   }).catch((error) => {
@@ -57,24 +57,6 @@ app.get(`/api/quotes/:id`, (req, res) => {
 // })
 
 /* CRUD Endpoints for Quotes */
-
-// Create a new quote
-app.post('/api/quotes', (req, res) => {
-  const { content, author } = req.body;
-  pool.query(
-    'INSERT INTO quotes (content, author) VALUES ($1, $2) RETURNING *',
-    [content, author],
-    (err, result) => {
-      if (err) {
-        console.error('Error creating quote:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-      } else {
-        res.status(201).json(result.rows[0]);
-      }
-    }
-  );
-});
-
 
 
 /* Routes */

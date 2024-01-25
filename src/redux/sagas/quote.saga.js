@@ -14,14 +14,21 @@ function* getQuote(action) {
     }
 }
 
+function* nextPage(action) {
+    try {
+        const next = yield axios.get(`/api/quotes/${action.payload}`);
+        yield put({ type: 'SET_SEARCH_QUOTES', payload: next.data });
+    } catch (error) {
+        console.log('Error in nextPage', error);
+    }
+}
+
 // function* getAuthor(action) {
 //     try {
 //         console.log('quote saga console.log', action.payload);
-//         // const quotes = yield axios.post(`/api/search/quotes&query=${action.payload}`);
 //         const quotes = yield axios.get(`/api/authors/${action.payload}`);
 //         console.log('Checking quotes.data', quotes.data)
 //         yield put({ type: 'SET_SEARCH_QUOTES', payload: quotes.data });
-
 //     } catch (error) {
 //         console.log('Error in getQuote', error);
 //     }

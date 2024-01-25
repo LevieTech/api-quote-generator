@@ -26,7 +26,7 @@ function SearchQuotes() {
                     <Button variant="contained" className="btn" type="submit">Submit</Button>
                 </form>
                 <br /><br />
-                <Quotes />
+                <Quotes search={search}/>
             </div>
         </center>
     )

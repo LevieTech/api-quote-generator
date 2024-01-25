@@ -14,6 +14,23 @@ router.get('/api/quotes', (req, res) => {
   });
 });
 
+// Create a new quote
+router.post('/api/quotes', (req, res) => {
+  const { content, author } = req.body;
+  pool.query(
+    'INSERT INTO quotes (content, author) VALUES ($1, $2) RETURNING *',
+    [content, author],
+    (err, result) => {
+      if (err) {
+        console.error('Error creating quote:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+      } else {
+        res.status(201).json(result.rows[0]);
+      }
+    }
+  );
+});
+
 // Update a quote by ID
 router.put('/api/quotes/:id', (req, res) => {
   const { id } = req.params;

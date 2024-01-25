@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Container, Grid, Card, IconButton, CardContent, Typography } from '@mui/material';
+import { Container, Grid, Card, IconButton, CardContent, Typography, Button } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function Quotes() {
+function Quotes(search) {
 
     const searchQuotes = useSelector(store => store.searchQuotes);
     const favorites = useSelector((store) => store.quotes.favorites);
+    let page = 1;
     const dispatch = useDispatch();
+
+    console.log('Checking the props', search)
 
     const addToFavorites = (quote) => {
         dispatch({ type: 'ADD_TO_FAVORITES', payload: quote });
@@ -21,6 +24,11 @@ function Quotes() {
     const isInFavorites = (quote) => {
         return favorites.some((favQuote) => favQuote._id === quote._id);
     };
+
+    const nextPage = () => {
+        let newPage = page++;
+        dispatch({ type:'NEXT_PAGE', payload: {search: search, newPage}})
+    }
 
 
     console.log('Checking to see the results', searchQuotes.results);
@@ -78,16 +86,20 @@ function Quotes() {
                                                         />
                                                     </IconButton>
                                                 </CardContent>
+                                               
                                             </Card>
                                             <br />
-                                        </Grid>
+                                        </Grid> 
                                     </center>
                                 </Container>
+                                
                             </div>
                         )
                     )
                 }
             </div>
+            <br />
+            <Button onClick={nextPage}>Next Page</Button>
         </center>
     )
 } //! End Quotes ()
