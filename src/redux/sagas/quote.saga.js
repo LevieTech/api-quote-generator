@@ -27,9 +27,9 @@ function* nextPage(action) {
 function* getAuthor(action) {
     try {
         console.log('quote saga console.log', action.payload);
-        const quotes = yield axios.get(`/api/authors/${action.payload}`);
-        console.log('Checking quotes.data', quotes.data)
-        yield put({ type: 'SET_SEARCH_QUOTES', payload: quotes.data });
+        const author = yield axios.get(`/api/authors/${action.payload}`);
+        console.log('Checking quotes.data', author.data)
+        yield put({ type: 'SET_AUTHOR_DETAILS', payload: author.data });
     } catch (error) {
         console.log('Error in getQuote', error);
     }
@@ -50,6 +50,7 @@ function* quoteSaga(){
     yield takeEvery('NEXT_PAGE', nextPage);
     // yield takeEvery('SET_AUTHOR', getAuthor); //! Not being used right now to retrieve the authors
     yield takeEvery('GET_RANDOM', getRandomQuote);
+    yield takeEvery('SET_AUTHOR', getAuthor);
 }
 
 export default quoteSaga;

@@ -29,6 +29,9 @@ function Quotes(search) {
         dispatch({ type:'NEXT_PAGE', payload: {search: search, page: newPage}})
     }
 
+    const authorDetails = (author) => {
+        dispatch({ type: 'SET_AUTHOR', payload: author });
+    }
 
     return (
         <center>
@@ -66,7 +69,7 @@ function Quotes(search) {
                                                         "{quote.content}"
                                                     </Typography>
                                                     <br />
-                                                    <Typography variant="h8">- {quote.author}</Typography>
+                                                    <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography>
                                                     <IconButton
                                                         onClick={() => {
                                                             if (!isInFavorites(quote)) {
