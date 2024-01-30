@@ -7,10 +7,8 @@ function Quotes(search) {
 
     const searchQuotes = useSelector(store => store.searchQuotes);
     const favorites = useSelector((store) => store.quotes.favorites);
-    let page = 1;
+    let page = 2;
     const dispatch = useDispatch();
-
-    console.log('Checking the props', search)
 
     const addToFavorites = (quote) => {
         dispatch({ type: 'ADD_TO_FAVORITES', payload: quote });
@@ -27,12 +25,9 @@ function Quotes(search) {
 
     const nextPage = () => {
         let newPage = page++;
-        dispatch({ type:'NEXT_PAGE', payload: {search: search, newPage}})
+        console.log('this is the new page', newPage);
+        dispatch({ type:'NEXT_PAGE', payload: {search: search, page: newPage}})
     }
-
-
-    console.log('Checking to see the results', searchQuotes.results);
-    console.log('Checking to see if theres more pages to search through', searchQuotes.page);
 
 
     return (

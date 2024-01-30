@@ -12,7 +12,7 @@ function SearchQuotes() {
 
     const handleSubmit = () => {
         dispatch({ type: 'SET_SEARCH', payload: search })
-        // dispatch({ type: 'SET_AUTHOR', payload: search }) // This is a dispatch to search by authors
+        dispatch({ type: 'SET_AUTHOR', payload: search }) // This is a dispatch to search by authors
     }
 
 

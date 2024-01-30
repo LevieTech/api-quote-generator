@@ -46,15 +46,16 @@ app.get(`/api/quotes/:id`, (req, res) => {
 
 
 // ! This is an api route to retrieve author searches
-// app.get(`/api/authors/:id`, (req, res) => {
-//   axios.get(`https://api.quotable.io/search/authors?query=${req.params.id}`).then((response) => {
-//     console.log('Checking the response', response.data)
-//     res.send(response.data);
-//   }).catch((error) => {
-//     console.log('Error in server.js', error);
-//     res.sendStatus(500);
-//   })
-// })
+
+app.get(`/api/authors/:id`, (req, res) => {
+  axios.get(`https://api.quotable.io/search/authors?query=${req.params.id}`).then((response) => {
+    console.log('Checking the response', response.data)
+    res.send(response.data);
+  }).catch((error) => {
+    console.log('Error in server.js', error);
+    res.sendStatus(500);
+  })
+})
 
 /* CRUD Endpoints for Quotes */
 
