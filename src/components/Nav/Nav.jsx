@@ -27,26 +27,13 @@ function Nav() {
             }
 
 
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
-
-            <Link className="navLink" to="/quotes">Quotes</Link>
-            <Link className="navLink" to="/favoritequotes">
-  Favorite Quotes
-</Link>
-<Link className="navLink" to="/searchbyauthor">
-  Search Quotes by Author
-</Link>
-
-
-           
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
+            {/* If a user is logged in, show these links */}
+            {user.id && (
+              <>
+                <Link className="navLink" to="/user"> Home </Link>
+                <Link className="navLink" to="/quotes"> Search </Link>
+                <Link className="navLink" to="/favoritequotes"> Favorites </Link>
+                <Link className="navLink" to="/info"> About </Link>
 
                 <LogOutButton className="navLink" />
               </>
