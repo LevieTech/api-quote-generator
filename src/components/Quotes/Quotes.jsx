@@ -2,7 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Container, Grid, Card, IconButton, CardContent, Typography, Button } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import AuthorDetails from '../Quotes/AuthorDetails';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
 function Quotes(search) {
+    //*trying to display author details jgk
+    const [showAuthorDetails, setShowAuthorDetails] = useState(false);
+    const authorDetailsData = useSelector((store) => store.authorDetails);
+
+    const axios = require('axios');
     const searchQuotes = useSelector(store => store.searchQuotes);
     const favorites = useSelector((store) => store.quotes.favorites);
     let page = 2;
@@ -20,12 +29,29 @@ function Quotes(search) {
     const nextPage = () => {
         let newPage = page++;
         console.log('this is the new page', newPage);
-        dispatch({ type:'NEXT_PAGE', payload: {search: search, page: newPage}})
+        dispatch({ type: 'NEXT_PAGE', payload: { search: search, page: newPage } })
     }
+    useEffect(() => {
+        if (authorDetailsData && Object.keys(authorDetailsData).length > 0) {
+            setShowAuthorDetails(true);
+        }
+    }, [authorDetailsData]);
 
-    const authorDetails = (author) => {
-        dispatch({ type: 'SET_AUTHOR', payload: author });
-    }
+
+    // const authorDetails = (author) => {
+    //     console.log("authorDetails function called with author:", author);
+    //     dispatch({ type: 'SET_AUTHOR', payload: author });
+    //     setShowAuthorDetails(true);//* added this line
+    // }
+    const authorDetails = async (authorName) => {
+        try {
+          const response = await axios.get(`/api/authors/${authorName}`);
+          dispatch({ type: 'SET_AUTHOR_DETAILS', payload: response.data });
+          setShowAuthorDetails(true);
+        } catch (error) {
+          console.error('Error fetching author details:', error);
+        }
+      };
 
     return (
         <center>
@@ -58,12 +84,18 @@ function Quotes(search) {
                                                     transform: 'scale(1.1)',
                                                 },
                                             }}>
+
                                                 <CardContent>
                                                     <Typography variant="body1">
                                                         "{quote.content}"
                                                     </Typography>
                                                     <br />
-                                                    <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography>
+
+                                                    <Link to={`/author/${quote.author}`} onClick={() => authorDetails(quote.author)}>
+                                                        <Typography variant="h8">- {quote.author}</Typography>
+                                                    </Link>
+
+
                                                     <IconButton
                                                         onClick={() => {
                                                             if (!isInFavorites(quote)) {
@@ -73,26 +105,35 @@ function Quotes(search) {
                                                             }
                                                         }}
                                                     >
+                                                   
                                                         <FavoriteIcon
                                                             color={isInFavorites(quote) ? 'primary' : 'secondary'}
                                                         />
                                                     </IconButton>
                                                 </CardContent>
-                                               
+
                                             </Card>
                                             <br />
-                                        </Grid> 
+                                        </Grid>
                                     </center>
                                 </Container>
-                                
+
                             </div>
                         )
                     )
                 }
+                {showAuthorDetails && <AuthorDetails author={authorDetailsData} />}
             </div>
             <br />
             <Button onClick={nextPage}>Next Page</Button>
         </center>
     )
 } //! End Quotes ()
-export default Quotes;                                               
+export default Quotes;
+
+{/* <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography> */ }
+
+{/* <Typography variant="h8">
+                                                        <Link to={`/author/${quote.author}`}>- {quote.author}</Link>
+                                                    </Typography>
+                                                     */}

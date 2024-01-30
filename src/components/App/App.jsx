@@ -24,6 +24,7 @@ import Quotes from '../Quotes/Quotes';
 import SearchQuotes from '../Quotes/SearchQuotes'
 import RandomQuotes from '../Quotes/RandomQuotes';
 import FavoriteQuotes from '../Quotes/FavoriteQuotes';
+import AuthorDetails from '../Quotes/AuthorDetails';
 
 function App() {
   const dispatch = useDispatch();
@@ -83,6 +84,9 @@ function App() {
             <FavoriteQuotes />
           </ProtectedRoute>
 
+
+
+          <Route path="/author/:authorId" component={AuthorDetails} />
 
           <Route
             exact
