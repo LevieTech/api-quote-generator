@@ -37,10 +37,10 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#eacca2',
+        main: '#d09f5a',
       },
       secondary: {
-        main: '#d09f5a'
+        main: '#eacca2'
       },
     }
   }); // End theme

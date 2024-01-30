@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Container, Grid, Card, IconButton, CardContent, Typography } from '@mui/material';
+import { Container, Grid, Card, IconButton, CardContent, Typography, Button } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function Quotes() {
+function Quotes(search) {
 
     const searchQuotes = useSelector(store => store.searchQuotes);
     const favorites = useSelector((store) => store.quotes.favorites);
+    let page = 2;
     const dispatch = useDispatch();
 
     const addToFavorites = (quote) => {
@@ -21,6 +22,16 @@ function Quotes() {
     const isInFavorites = (quote) => {
         return favorites.some((favQuote) => favQuote._id === quote._id);
     };
+
+    const nextPage = () => {
+        let newPage = page++;
+        console.log('this is the new page', newPage);
+        dispatch({ type:'NEXT_PAGE', payload: {search: search, page: newPage}})
+    }
+
+    const authorDetails = (author) => {
+        dispatch({ type: 'SET_AUTHOR', payload: author });
+    }
 
     return (
         <center>
@@ -58,7 +69,7 @@ function Quotes() {
                                                         "{quote.content}"
                                                     </Typography>
                                                     <br />
-                                                    <Typography variant="h8">- {quote.author}</Typography>
+                                                    <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography>
                                                     <IconButton
                                                         onClick={() => {
                                                             if (!isInFavorites(quote)) {
@@ -73,16 +84,20 @@ function Quotes() {
                                                         />
                                                     </IconButton>
                                                 </CardContent>
+                                               
                                             </Card>
                                             <br />
-                                        </Grid>
+                                        </Grid> 
                                     </center>
                                 </Container>
+                                
                             </div>
                         )
                     )
                 }
             </div>
+            <br />
+            <Button onClick={nextPage}>Next Page</Button>
         </center>
     )
 } //! End Quotes ()

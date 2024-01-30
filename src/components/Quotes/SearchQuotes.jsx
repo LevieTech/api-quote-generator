@@ -12,6 +12,7 @@ function SearchQuotes() {
 
     const handleSubmit = () => {
         dispatch({ type: 'SET_SEARCH', payload: search })
+        dispatch({ type: 'SET_AUTHOR', payload: search }) // This is a dispatch to search by authors
     }
 
 
@@ -25,7 +26,7 @@ function SearchQuotes() {
                     <Button variant="contained" className="btn" type="submit">Submit</Button>
                 </form>
                 <br /><br />
-                <Quotes />
+                <Quotes search={search}/>
             </div>
         </center>
     )
