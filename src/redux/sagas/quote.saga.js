@@ -48,7 +48,6 @@ function* getRandomQuote() {
 function* quoteSaga(){
     yield takeEvery('SET_SEARCH', getQuote);
     yield takeEvery('NEXT_PAGE', nextPage);
-    // yield takeEvery('SET_AUTHOR', getAuthor); //! Not being used right now to retrieve the authors
     yield takeEvery('GET_RANDOM', getRandomQuote);
     yield takeEvery('SET_AUTHOR', getAuthor);
 }

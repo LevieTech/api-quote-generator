@@ -42,7 +42,9 @@ function FavoriteQuotes() {
     return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
   };
 
-
+  const authorDetails = (author) => {
+    dispatch({ type: 'SET_AUTHOR', payload: author });
+}
 
   //?Sams alert
   // const removeFromFavorites = (quote) => {
@@ -88,7 +90,7 @@ function FavoriteQuotes() {
                         "{quote.content}"
                       </Typography>
                       <br />
-                      <Typography variant="h8">- {quote.author}</Typography>
+                      <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography>
                       <IconButton onClick={() => openConfirmationDialog(quote)}>
                         <FavoriteIcon color={isInFavorites(quote) ? 'primary' : 'secondary'} />
                       </IconButton>
