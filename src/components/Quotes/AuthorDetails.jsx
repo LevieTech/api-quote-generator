@@ -17,14 +17,14 @@ function AuthorDetails() {
 
   return (
     <div className="author-details">
-      <h2>Author Details</h2>
+      {/* <h2>Author Details</h2> */}
      
-      <p>Name: {authorDetails.name}</p>
+      {/* <p>Name: {authorDetails.name}</p>
       <p>Bio: {authorDetails.bio}</p>
       <p>Link: {authorDetails.link}</p>
       <p>Description: {authorDetails.description}</p>
 
-      {/* Add more author details here */}
+      Add more author details here */}
     </div>
   );
 }
