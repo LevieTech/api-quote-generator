@@ -18,7 +18,7 @@ function AuthorDetails() {
   return (
     <div className="author-details">
 
-<p>Name: {authorDetails.name}</p>
+
       {/* <h2>Author Details</h2> */}
      
       {/* <p>Name: {authorDetails.name}</p>
