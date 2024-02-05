@@ -24,6 +24,7 @@ function* getAuthor(action) {
     try {
         console.log('quote saga console.log', action.payload); const author = yield axios.get(`/api/authors/${action.payload}`);
         console.log('Checking quotes.data', author.data)
+        
         yield put({ type: 'SET_AUTHOR_DETAILS', payload: author.data });
     } catch (error) {
         console.log('Error in getQuote', error);

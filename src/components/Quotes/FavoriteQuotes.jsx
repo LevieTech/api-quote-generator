@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Container, Grid, Card, CardContent, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Dialog, DialogActions, DialogContent, Button } from '@mui/material';
-
+import { Link } from 'react-router-dom';
 
 //Fav Quotes function 
 function FavoriteQuotes() {
@@ -91,6 +91,12 @@ function FavoriteQuotes() {
                       </Typography>
                       <br />
                       <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography>
+                      <Typography variant="h8">
+                                    <Link to={`/author/${quote.author}`} onClick={() => authorDetails(quote.author)}>
+                                        - {quote.author}
+                                    </Link>
+                                </Typography>
+                      
                       <IconButton onClick={() => openConfirmationDialog(quote)}>
                         <FavoriteIcon color={isInFavorites(quote) ? 'primary' : 'secondary'} />
                       </IconButton>

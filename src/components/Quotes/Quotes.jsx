@@ -45,13 +45,13 @@ function Quotes(search) {
     // }
     const authorDetails = async (authorName) => {
         try {
-          const response = await axios.get(`/api/authors/${authorName}`);
-          dispatch({ type: 'SET_AUTHOR_DETAILS', payload: response.data });
-          setShowAuthorDetails(true);
+            const response = await axios.get(`/api/authors/${authorName}`);
+            dispatch({ type: 'SET_AUTHOR_DETAILS', payload: response.data });
+            setShowAuthorDetails(true);
         } catch (error) {
-          console.error('Error fetching author details:', error);
+            console.error('Error fetching author details:', error);
         }
-      };
+    };
 
     return (
         <center>
@@ -105,7 +105,7 @@ function Quotes(search) {
                                                             }
                                                         }}
                                                     >
-                                                   
+
                                                         <FavoriteIcon
                                                             color={isInFavorites(quote) ? 'primary' : 'secondary'}
                                                         />

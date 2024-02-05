@@ -31,7 +31,7 @@ function AuthorDetails() {
 
   return (
     <div className="author-details">
-//? tried this out 
+
 {/* <form onSubmit={handleSubmit}>
                     <TextField fullWidth variant="standard" style={{ maxWidth: '25%', }} type="search" value={search} onChange={(event) => setSearch(event.target.value)} />
                     <Button variant="contained" className="btn" type="submit">Submit</Button>

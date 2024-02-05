@@ -85,7 +85,7 @@ function App() {
           </ProtectedRoute>
 
 
-
+          <Route path="/author/:authorName" component={AuthorDetails} />
           <Route path="/author/:authorId" component={AuthorDetails} />
 
           <Route
