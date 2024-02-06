@@ -104,7 +104,7 @@ function RandomQuotes() {
                 ))
             )}
             <br />
-            {showAuthorDetails && <AuthorDetails author={authorDetailsData} />} 
+          
         </div>
     );
 }

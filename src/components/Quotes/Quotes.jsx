@@ -122,7 +122,7 @@ function Quotes(search) {
                         )
                     )
                 }
-                {showAuthorDetails && <AuthorDetails author={authorDetailsData} />}
+               
             </div>
             <br />
             <Button onClick={nextPage}>Next Page</Button>
@@ -131,9 +131,5 @@ function Quotes(search) {
 } //! End Quotes ()
 export default Quotes;
 
-{/* <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography> */ }
 
-{/* <Typography variant="h8">
-                                                        <Link to={`/author/${quote.author}`}>- {quote.author}</Link>
-                                                    </Typography>
-                                                     */}
+// {showAuthorDetails && <AuthorDetails author={authorDetailsData} />}
