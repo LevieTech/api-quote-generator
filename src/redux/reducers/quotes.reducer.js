@@ -13,6 +13,7 @@ const initialState = {
   const quoteReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'SET_QUOTES':
+        console.log('SET_QUOTES action payload:', action.payload);
         console.log('Reducer check:', action.payload);
             // return action.payload;
            

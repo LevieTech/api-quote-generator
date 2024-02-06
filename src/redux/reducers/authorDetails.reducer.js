@@ -1,37 +1,31 @@
 const initialState = {
-    name: '',
-    bio: '',
-    link: '',
-    // other properties...
-  };
-  
-  const authorDetails = (state = initialState, action) => {
-    switch (action.type) {
-      case 'SET_AUTHOR_DETAILS':
-        return {
-          ...state,
-          name: action.payload.name,
-          bio: action.payload.bio,
-          link: action.payload.link,
-          // other properties...
-        };
-      default:
-        return state;
-    }
-  };
-  
-  export default authorDetails;
-  
+  // ... other initial state properties
+  authorDetails: {
+    name: 'Unknown',
+    bio: 'No bio available',
+    link: 'No link available',
+    description: 'No description available',
+  },
+};
+
+const authorDetails = (state = initialState, action) => {
+  switch (action.type) {
+    case 'SET_AUTHOR_DETAILS':
+      console.log('SET_AUTHOR_DETAILS action payload:', action.payload);
+      return {
+        ...state,
+        authorDetails: action.payload,
+        // name: action.payload.name,
+        // bio: action.payload.bio,
+        // link: action.payload.link,
+        // description: action.payload.description,
+      };
+    default:
+      return state;
+  }
+};
+
+export default authorDetails;
 
 
-// const authorDetails = (state = [], action) => {
-//     switch (action.type) {
-//         case 'SET_AUTHOR_DETAILS':
-//             console.log('Reducer: SET_AUTHOR_DETAILS, Payload:', action.payload);
-//             return action.payload;
-//         default:
-//             return state;
-//     }
-// }
 
-// export default authorDetails;

@@ -15,6 +15,7 @@ function* nextPage(action) {
     try {
         console.log('Checking the payload:', action.payload)
         const next = yield axios.get(`/api/quotes/${action.payload}`);
+        
         yield put({ type: 'SET_SEARCH_QUOTES', payload: next.data });
     } catch (error) {
         console.log('Error in nextPage', error);
@@ -22,13 +23,28 @@ function* nextPage(action) {
 }
 function* getAuthor(action) {
     try {
-        console.log('quote saga console.log', action.payload); const author = yield axios.get(`/api/authors/${action.payload}`);
-        console.log('Checking quotes.data', author.data)
+        console.log('Fetching author details for:', action.payload); // Log the authorName you are fetching
+        const response = yield axios.get(`/api/authors/${action.payload}`);
+        const authorDetails = response.data; // Ensure the response contains the expected author details
         
-        yield put({ type: 'SET_AUTHOR_DETAILS', payload: author.data });
-    } catch (error) {
-        console.log('Error in getQuote', error);
-    }}
+        console.log('Author details response:', authorDetails); // Log the response data
+        console.log('Author details payload:', authorDetails);
+
+        if (authorDetails && Object.keys(authorDetails).length > 0) {
+            // Check if authorDetails is not null or undefined
+            yield put({ type: 'SET_AUTHOR_DETAILS', payload: authorDetails });
+          } else {
+            console.log('Author details not found or empty.');
+            // Handle case where authorDetails is not found or empty
+            // Dispatch an action or set some state to handle this situation.
+          }
+        } catch (error) {
+          console.error('Error in getAuthor:', error);
+          // Handle error, dispatch an error action or set some error state here.
+        }
+      } 
+
+
     function* getRandomQuote() {
         try {
             const quotes = yield axios.get(`/api/random/`);
@@ -41,7 +57,6 @@ function* getAuthor(action) {
     function* quoteSaga(){
         yield takeEvery('SET_SEARCH', getQuote);
         yield takeEvery('NEXT_PAGE', nextPage);
-        // yield takeEvery('SET_AUTHOR', getAuthor); //! Not being used right now to retrieve the authors
         yield takeEvery('GET_RANDOM', getRandomQuote);
         yield takeEvery('SET_AUTHOR', getAuthor);
     }
