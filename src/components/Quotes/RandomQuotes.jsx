@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Card, IconButton, CardContent, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import AuthorDetails from '../Quotes/AuthorDetails';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function RandomQuotes() {

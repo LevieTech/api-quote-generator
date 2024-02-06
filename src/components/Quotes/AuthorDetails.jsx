@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Card, CardContent, Typography } from '@mui/material';
 
 
 function AuthorDetails() {
@@ -16,16 +17,30 @@ function AuthorDetails() {
     );
   }
   return (
-    <div className="author-details">
-
-<h2>Author Details</h2> 
-     
-      <p>Name: {authorDetails.name}</p>
-      <p>Bio: {authorDetails.bio}</p>
-      <p>Link: {authorDetails.link}</p>
-      <p>Description: {authorDetails.description}</p>
-
-   
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Card 
+        sx={{
+          boxShadow: 4,
+          width: '350px',
+          height: '225px',
+          fontSize: 16,
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '15px',
+          outlineWidth: 3,
+        }}
+      >
+        <CardContent>
+          <Typography variant="h5">Author Details</Typography>
+          <br />
+          <Typography variant="body1">Name: {authorDetails.name}</Typography>
+          <Typography variant="body1">Bio: {authorDetails.bio}</Typography>
+          <Typography variant="body1">Link: {authorDetails.link}</Typography>
+          <Typography variant="body1">Description: {authorDetails.description}</Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 }
