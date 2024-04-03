@@ -1,15 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Card, IconButton, CardContent, Typography } from '@mui/material';
-import React, { useEffect } from 'react';
+import { Card, IconButton, CardContent, Typography, Modal } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function RandomQuotes() {
     const quotes = useSelector((store) => store.quotes.quotes);
     const favorites = useSelector((store) => store.quotes.favorites);
+    const authorDetails = useSelector((store => store.authorDetails));
+    const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
 
+    console.log('AuthorDetails in RandomQuotes', authorDetails.results);
+
     useEffect(() => {
-        dispatch({ type: 'GET_RANDOM' }); // Dispatch action to fetch random quotes
+        // dispatch({ type: 'GET_RANDOM' }); // Dispatch action to fetch random quotes
         dispatch({ type: 'INITIALIZE_FAVORITES' }); // Dispatch action to initialize favorites
     }, [dispatch]);
 
@@ -25,6 +29,15 @@ function RandomQuotes() {
     const isInFavorites = (quote) => {
         return favorites.some((favQuote) => favQuote._id === quote._id);
     };
+
+    const handleClose = () => setOpen(false);
+    const handleOpen = () => setOpen(true);
+
+    const showAuthorDetails = (author) => {
+        dispatch({ type: 'SET_AUTHOR', payload: author });
+        handleOpen();
+
+    }
 
     return (
         <div className="randomQuoteDiv">
@@ -53,7 +66,12 @@ function RandomQuotes() {
                                     "{quote.content}"
                                 </Typography>
                                 <br />
-                                <Typography variant="h8">- {quote.author}</Typography>
+                                <Typography variant="h8" onClick={() => showAuthorDetails(quote.author)}>- {quote.author}</Typography>
+                                <Modal open={open}
+                                    onClose={handleClose}
+                                >
+                                    <h1>Hello!</h1>
+                                </Modal>
                                 <IconButton
                                     onClick={() => {
                                         if (!isInFavorites(quote)) {

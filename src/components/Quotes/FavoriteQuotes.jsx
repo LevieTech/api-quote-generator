@@ -11,6 +11,7 @@ function FavoriteQuotes() {
   const [quoteToRemove, setQuoteToRemove] = useState(null); //State to store the quote to be removed
 
   const favoriteQuotes = useSelector((store) => store.quotes.favorites);
+  const authorDetails = useSelector((store) => store.authorDetails);
   const dispatch = useDispatch();
 
   const openConfirmationDialog = (quote) => {
@@ -42,7 +43,7 @@ function FavoriteQuotes() {
     return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
   };
 
-  const authorDetails = (author) => {
+  const showAuthorDetails = (author) => {
     dispatch({ type: 'SET_AUTHOR', payload: author });
 }
 
@@ -51,6 +52,8 @@ function FavoriteQuotes() {
   //   alert('Are you sure you want to remove this quote from Favorites?');
   //   dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
   // };
+
+  console.log('Check the author details', authorDetails.results);
 
 
   return (
@@ -90,7 +93,7 @@ function FavoriteQuotes() {
                         "{quote.content}"
                       </Typography>
                       <br />
-                      <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography>
+                      <Typography variant="h8" onClick={() => showAuthorDetails(quote.author)}>- {quote.author}</Typography>
                       <IconButton onClick={() => openConfirmationDialog(quote)}>
                         <FavoriteIcon color={isInFavorites(quote) ? 'primary' : 'secondary'} />
                       </IconButton>
