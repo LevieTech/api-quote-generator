@@ -39,6 +39,18 @@ function RandomQuotes() {
 
     }
 
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+
     return (
         <div className="randomQuoteDiv">
             <br />
@@ -70,7 +82,17 @@ function RandomQuotes() {
                                 <Modal open={open}
                                     onClose={handleClose}
                                 >
-                                    <h1>Hello!</h1>
+                                    <Card sx={style}>
+                                        <center>
+                                            <h1>Hello!</h1>
+                                            <p>{authorDetails.results.bio}</p>
+                                            {/* (
+                                            authorDetails.results.map(details )
+                                        ) */}
+
+                                        </center>
+                                    </Card>
+
                                 </Modal>
                                 <IconButton
                                     onClick={() => {
