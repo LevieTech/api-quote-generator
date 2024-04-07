@@ -85,14 +85,13 @@ function RandomQuotes() {
                                     <Card sx={style}>
                                         <center>
                                             <h1>Hello!</h1>
-                                            <p>{authorDetails.results.bio}</p>
-                                            {/* (
-                                            authorDetails.results.map(details )
-                                        ) */}
-
+                                            <p>{authorDetails.results.map(author => 
+                                                    {
+                                                       <p>{author.results.bio}</p>
+                                                    }
+                                                )}</p>
                                         </center>
                                     </Card>
-
                                 </Modal>
                                 <IconButton
                                     onClick={() => {
