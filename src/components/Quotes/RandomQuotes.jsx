@@ -77,7 +77,6 @@ function RandomQuotes() {
                                 </Typography>
                                 <br />
                                 <Typography id="authorDetail" variant="h8" onClick={() => showAuthorDetails(quote.author)}>{quote.author}</Typography>
-                        
                                 <Modal open={open}
                                     onClose={handleClose}
                                 >
