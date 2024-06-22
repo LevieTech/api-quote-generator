@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Card, IconButton, CardContent, Typography, Modal } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import AuthorDetails from '../AuthorDetails/AuthorDetails';
 
 function RandomQuotes() {
     const quotes = useSelector((store) => store.quotes.quotes);
@@ -78,18 +79,15 @@ function RandomQuotes() {
                                     "{quote.content}"
                                 </Typography>
                                 <br />
-                                <Typography variant="h8" onClick={() => showAuthorDetails(quote.author)}>- {quote.author}</Typography>
+                                <Typography id="authorDetail" variant="h8" onClick={() => showAuthorDetails(quote.author)}>{quote.author}</Typography>
+                        
                                 <Modal open={open}
                                     onClose={handleClose}
                                 >
                                     <Card sx={style}>
                                         <center>
                                             <h1>Hello!</h1>
-                                            <p>{authorDetails.results.map(author => 
-                                                    {
-                                                       <p>{author.results.bio}</p>
-                                                    }
-                                                )}</p>
+                                            <AuthorDetails />
                                         </center>
                                     </Card>
                                 </Modal>

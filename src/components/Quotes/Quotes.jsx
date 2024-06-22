@@ -8,7 +8,7 @@ function Quotes(search) {
 
     const searchQuotes = useSelector(store => store.searchQuotes);
     const favorites = useSelector((store) => store.quotes.favorites);
-    const authorDetails = useSelector((store) => store.authorDetails);
+    
     let page = 2;
     const dispatch = useDispatch();
 
@@ -71,7 +71,7 @@ function Quotes(search) {
                                                         "{quote.content}"
                                                     </Typography>
                                                     <br />
-                                                    <Typography variant="h8" onClick={() => showAuthorDetails(quote.author)}>- {quote.author}</Typography>
+                                                    <Typography variant="h8" id="authorDetail" onClick={() => showAuthorDetails(quote.author)}>{quote.author}</Typography>
                                                     <IconButton
                                                         onClick={() => {
                                                             if (!isInFavorites(quote)) {

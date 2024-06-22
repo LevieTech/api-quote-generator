@@ -93,7 +93,7 @@ function FavoriteQuotes() {
                         "{quote.content}"
                       </Typography>
                       <br />
-                      <Typography variant="h8" onClick={() => showAuthorDetails(quote.author)}>- {quote.author}</Typography>
+                      <Typography variant="h8" id="authorDetail" onClick={() => showAuthorDetails(quote.author)}>{quote.author}</Typography>
                       <IconButton onClick={() => openConfirmationDialog(quote)}>
                         <FavoriteIcon color={isInFavorites(quote) ? 'primary' : 'secondary'} />
                       </IconButton>
