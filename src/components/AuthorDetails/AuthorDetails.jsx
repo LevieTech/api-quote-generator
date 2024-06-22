@@ -5,7 +5,7 @@ import { Card, IconButton, CardContent, Typography, Modal } from '@mui/material'
 
 
 function AuthorDetails() {
-    const authorDetails = useSelector((store) => store.authorDetails);
+    const authorDetails = useSelector(store => store.authorDetails);
 
     console.log('Author Details check', authorDetails);
 
@@ -23,10 +23,11 @@ function AuthorDetails() {
 
     return (
         <div className="authorDetailsDiv">
-            <h2>Hello again</h2>
             {
                 authorDetails.results.map(author => {
-                    <h1>{author.bio}</h1>
+                    return (
+                        <p>{author.bio}</p>
+                    )
                 })
             }
         </div>

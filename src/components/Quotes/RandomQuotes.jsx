@@ -7,11 +7,8 @@ import AuthorDetails from '../AuthorDetails/AuthorDetails';
 function RandomQuotes() {
     const quotes = useSelector((store) => store.quotes.quotes);
     const favorites = useSelector((store) => store.quotes.favorites);
-    const authorDetails = useSelector((store => store.authorDetails));
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
-
-    console.log('AuthorDetails in RandomQuotes', authorDetails.results);
 
     useEffect(() => {
         // dispatch({ type: 'GET_RANDOM' }); // Dispatch action to fetch random quotes
@@ -86,7 +83,6 @@ function RandomQuotes() {
                                 >
                                     <Card sx={style}>
                                         <center>
-                                            <h1>Hello!</h1>
                                             <AuthorDetails />
                                         </center>
                                     </Card>
