@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Grid, Card, CardContent, IconButton, Typography } from '@mui/material';
+import { Container, Grid, Card, CardContent, IconButton, Typography, Modal } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Dialog, DialogActions, DialogContent, Button } from '@mui/material';
+import AuthorDetails from '../AuthorDetails/AuthorDetails';
 
 
 //Fav Quotes function 
 function FavoriteQuotes() {
   const [confirmationDialogOpen, setConfirmationDialogOpen] = useState(false); // State for dialog visibility
   const [quoteToRemove, setQuoteToRemove] = useState(null); //State to store the quote to be removed
-
+  const [open, setOpen] = useState(false);
   const favoriteQuotes = useSelector((store) => store.quotes.favorites);
+  const authorDetails = useSelector((store) => store.authorDetails);
   const dispatch = useDispatch();
 
   const openConfirmationDialog = (quote) => {
@@ -42,15 +44,33 @@ function FavoriteQuotes() {
     return favoriteQuotes.some((favQuote) => favQuote._id === quote._id);
   };
 
-  const authorDetails = (author) => {
+  const showAuthorDetails = (author) => {
     dispatch({ type: 'SET_AUTHOR', payload: author });
-}
+    handleOpen();
+  }
+
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
 
   //?Sams alert
   // const removeFromFavorites = (quote) => {
   //   alert('Are you sure you want to remove this quote from Favorites?');
   //   dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: quote });
   // };
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
+  console.log('Check the author details', authorDetails.results);
 
 
   return (
@@ -90,7 +110,16 @@ function FavoriteQuotes() {
                         "{quote.content}"
                       </Typography>
                       <br />
-                      <Typography variant="h8" onClick={() => authorDetails(quote.author)}>- {quote.author}</Typography>
+                      <Typography variant="h8" id="authorDetail" onClick={() => showAuthorDetails(quote.author)}>{quote.author}</Typography>
+                      <Modal open={open}
+                        onClose={handleClose}
+                      >
+                        <Card sx={style}>
+                          <center>
+                            <AuthorDetails />
+                          </center>
+                        </Card>
+                      </Modal>
                       <IconButton onClick={() => openConfirmationDialog(quote)}>
                         <FavoriteIcon color={isInFavorites(quote) ? 'primary' : 'secondary'} />
                       </IconButton>

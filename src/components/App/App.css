@@ -128,3 +128,8 @@ input {
   align-items: center;
   justify-content: center;
 }
+
+#authorDetail {
+    color: blue;
+    text-decoration: underline;
+}

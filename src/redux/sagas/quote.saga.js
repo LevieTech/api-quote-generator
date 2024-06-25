@@ -16,7 +16,7 @@ function* getQuote(action) {
 
 function* nextPage(action) {
     try {
-        console.log('Checking the payload:', action.payload)
+        console.log('Checking the page payload:', action.payload)
         const next = yield axios.get(`/api/quotes/${action.payload}`);
         yield put({ type: 'SET_SEARCH_QUOTES', payload: next.data });
     } catch (error) {
